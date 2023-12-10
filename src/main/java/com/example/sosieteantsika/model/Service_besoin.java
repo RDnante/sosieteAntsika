@@ -1,6 +1,11 @@
 package com.example.sosieteantsika.model;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.Statement;
+import java.time.LocalTime;
+
+import com.example.sosieteantsika.connection.Connect;
 
 public class Service_besoin {
     Integer id_service_besoin;
@@ -59,5 +64,19 @@ public class Service_besoin {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public void insertServiceBesoin(Connection c, int idService, int idArticle, double quantite)throws Exception{
+        try {
+            if (c==null||c.isClosed())
+                c = (new Connect()).connecter();
+
+            Statement st = c.createStatement();
+            String sql = "insert into service_besoin(id_service,id_article,quantite,date,status) values("+idService+","+idArticle+","+quantite+",DEFAULT,0)";
+            int exct = st.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // TODO: handle exception
+        }
     }
 }
