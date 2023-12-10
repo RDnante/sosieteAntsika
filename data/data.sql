@@ -9,7 +9,7 @@ insert into service values (default,'securite');
 insert into service values (default,'magasin');
 insert into service values (default,'RH');
 
-insert into login(idService,idPoste,password) values
+insert into login(id_service,id_poste,password) values
                  (1,1,'eco123E'),
                  (1,2,'eco123'),
                  (2,1,'secu123E'),
@@ -18,14 +18,14 @@ insert into login(idService,idPoste,password) values
                  (3,2,'mag123'),
                  (3,3,'mag123A'),
                  (3,4,'mag123V');
-insert into login(idService,idPoste,password) values (4,2,'RH123');
+insert into login(id_service,id_poste,password) values (4,2,'RH123');
 
 INSERT INTO unite(libelle) VALUES
                 ('unite'),
                 ('kg'),
                 ('litre');
 
-INSERT INTO typeGestion(libelle,typeGestion) VALUES
+INSERT INTO type_gestion(libelle,type_gestion) VALUES
                         ('LIFO', 'desc'),
                         ('FIFO', 'asc');
 

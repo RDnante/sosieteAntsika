@@ -2,7 +2,7 @@ create database syscom;
 \c syscom
 
 create table poste(
-    idPoste serial primary key,
+    id_poste serial primary key,
     nom varchar(30)
 );
 create table service (
@@ -11,9 +11,9 @@ create table service (
 );
 
 create table login(
-    idLogin serial primary key,
-    idService int references service(id_service),
-    idPoste int references poste(idPoste),
+    id_login serial primary key,
+    id_service int references service(id_service),
+    id_poste int references poste(id_poste),
     password varchar(30)
 );
 
@@ -22,27 +22,27 @@ create table categorie (
     nom varchar(40)
 );
 
-CREATE TABLE typeGestion(
-    idTypeGestion SERIAL PRIMARY KEY,
+CREATE TABLE type_gestion(
+    id_type_gestion SERIAL PRIMARY KEY,
     libelle VARCHAR(50),
-    typeGestion VARCHAR(50)
+    type_gestion VARCHAR(50)
 );
 
 CREATE TABLE unite(
-    idUnite SERIAL PRIMARY KEY,
-    libelle VARCHAR(50)
+    id_unite SERIAL PRIMARY KEY,
+    libelle VARCHAR(50)r
 );
 
 create table article (
     id_article serial primary key,
     id_categorie int references categorie(id_categorie),
     nom varchar(40),
-    idUnite int references unite(idUnite),
-    idTypeGestion int references typeGestion(idTypeGestion)
+    id_unite int references unite(id_unite),
+    id_type_gestion int references type_gestion(id_type_gestion)
 );
 
 create table service_besoin (
-    id_servicebesoin serial primary key,
+    id_service_besoin serial primary key,
     id_service int references service(id_service),
     id_article int references article(id_article),
     quantite decimal,
@@ -54,7 +54,7 @@ create table fournisseur (
     id_fournisseur serial primary key,
     nom varchar(50),
     mdp varchar(30)
-);0
+);
 
 
 create table stock_fournisseur (
@@ -66,57 +66,57 @@ create table stock_fournisseur (
 );
 
 create table commande(
-    idCommande serial primary key,
+    id_commande serial primary key,
     nom varchar(50),
     date varchar(50),
-    livraisonPartielle boolean,
-    modePaiement varchar(50),
+    livraison_partielle boolean,
+    mode_paiement varchar(50),
     categorie varchar(50),
     designation varchar(50),
     quantite decimal,
     tva decimal,
     ttc decimal,
-    idServiceBesoin int
+    id_service_besoin int
 );
 
-create table bonDeCommande (
-    idBonDeCommande serial primary key,
+create table bon_de_commande (
+    id_bon_de_commande serial primary key,
     id_fournisseur int references fournisseur(id_fournisseur),
-    dateConfirmation DATE DEFAULT CURRENT_DATE
+    date_confirmation DATE DEFAULT CURRENT_DATE
 );
 
-create table bonDeCommande_commandes (
-    idBonDeCommande_commande serial primary key,
-    idBonDeCommande int references  bonDeCommande(idBonDeCommande),
-    idCommande int references commande(idCommande)
+create table bon_de_commande_commandes (
+    id_bon_de_commande_commande serial primary key,
+    id_bon_de_commande int references  bon_de_commande(id_bon_de_commande),
+    id_commande int references commande(id_commande)
 );
 
 
-CREATE TABLE entreeStock(
-    idEntreeStock SERIAL PRIMARY KEY,
-    idArticle INT,
+CREATE TABLE entree_stock(
+    id_entree_stock SERIAL PRIMARY KEY,
+    id_article INT,
     quantite DECIMAL,
-    prixUnitaire DECIMAL,
-    dateEntree DATE,
-    FOREIGN KEY (idArticle) REFERENCES article(id_article)
+    prix_unitaire DECIMAL,
+    date_entree DATE,
+    FOREIGN KEY (id_article) REFERENCES article(id_article)
 );
 
-CREATE TABLE sortiestock(
-    idSortieStock SERIAL PRIMARY KEY,
-    idArticle INT,
-    quantiteTotal DECIMAL,
-    dateSortie DATE,
-    FOREIGN KEY (idArticle) REFERENCES article(id_article)
+CREATE TABLE sortie_stock(
+    id_sortie_stock SERIAL PRIMARY KEY,
+    id_article INT,
+    quantite_total DECIMAL,
+    date_sortie DATE,
+    FOREIGN KEY (id_article) REFERENCES article(id_article)
 );
 
-CREATE TABLE mouvementSortie(
-    idMouvementSortie SERIAL PRIMARY KEY,
-    idSortieStock INT,
-    idEntreeStock INT,
-    idArticle INT,
+CREATE TABLE mouvement_sortie(
+    id_mouvement_sortie SERIAL PRIMARY KEY,
+    id_sortie_stock INT,
+    id_entree_stock INT,
+    id_article INT,
     quantite DECIMAL,
-    prixUnitaire DECIMAL,
-    FOREIGN KEY (idArticle) REFERENCES article(id_article),
-    FOREIGN KEY (idEntreeStock) REFERENCES entreeStock(idEntreeStock),
-    FOREIGN KEY (idSortieStock) REFERENCES sortieStock(idSortieStock)
+    prix_unitaire DECIMAL,
+    FOREIGN KEY (id_article) REFERENCES article(id_article),
+    FOREIGN KEY (id_entree_stock) REFERENCES entree_stock(id_entree_stock),
+    FOREIGN KEY (id_sortie_stock) REFERENCES sortie_stock(id_sortie_stock)
 );
