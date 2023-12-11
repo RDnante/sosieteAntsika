@@ -91,7 +91,6 @@ create table bon_de_commande_commandes (
     id_commande int references commande(id_commande)
 );
 
-
 CREATE TABLE entree_stock(
     id_entree_stock SERIAL PRIMARY KEY,
     id_article INT,
