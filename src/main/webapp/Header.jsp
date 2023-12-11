@@ -51,12 +51,12 @@
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
                     <li>
-                        <a href="Recap_cand.jsp">
-                            <i class="fas fa-chart-bar"></i>Resultat Candidats</a>
+                        <a href="Insert_besoins.jsp.jsp">
+                            <i class="fas fa-chart-bar"></i>Inserer Besoin</a>
                     </li>
                     <li>
-                        <a href="Recap_commune.jsp">
-                            <i class="fas fa-chart-bar"></i>Resultat Commune</a>
+                        <a href="">
+                            <i class="fas fa-chart-bar"></i>CC</a>
                     </li>
 
                 </ul>
