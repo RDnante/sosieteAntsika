@@ -48,7 +48,7 @@ public class Login {
     public Login login(String mdp) throws Exception {
         Connect connect = new Connect();
         Connection connection = null;
-        Login valiny = null;
+        Login valiny = new Login();
         try {
             connection = connect.connecter();
             Statement statement = connection.createStatement();
