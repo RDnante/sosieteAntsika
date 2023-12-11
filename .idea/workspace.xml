@@ -11,7 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="142c0094-da33-422c-8702-213486fbc76e" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +21,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-
         <option value="Class" />
       </list>
     </option>
@@ -64,7 +62,6 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -182,7 +179,7 @@
       <option name="presentableId" value="Default" />
       <updated>1702270893960</updated>
       <workItem from="1702270895453" duration="1775000" />
-      <workItem from="1702282474728" duration="4524000" />
+      <workItem from="1702282474728" duration="5656000" />
     </task>
     <servers />
   </component>
