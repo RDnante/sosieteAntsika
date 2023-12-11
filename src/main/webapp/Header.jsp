@@ -51,7 +51,7 @@
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
                     <li>
-                        <a href="Insert_besoins.jsp.jsp">
+                        <a href="Insert_besoins.jsp">
                             <i class="fas fa-chart-bar"></i>Inserer Besoin</a>
                     </li>
                     <li>

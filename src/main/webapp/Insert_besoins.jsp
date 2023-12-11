@@ -18,8 +18,12 @@
             <hr>
             <form action="" method="post">
               <div class="form-group">
-                <label for="article" class="control-label mb-1">Article</label>
-                <input id="article" name="article" type="text" class="form-control">
+                <label for="idarticle" class="control-label mb-1">Article</label>
+                <select id="idarticle" name="idarticle" class="form-control" required>
+                  <% for (int i = 0; i < 2; i++) { %>
+                  <option value="<%= i %>"><%= i %></option>
+                  <% } %>
+                </select>
               </div>
               <div class="form-group">
                 <label for="nombre" class="control-label mb-1">Nombre</label>
