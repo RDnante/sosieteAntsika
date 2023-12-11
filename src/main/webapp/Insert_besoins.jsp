@@ -1,4 +1,10 @@
+<%@ page import="com.example.sosieteantsika.model.Article" %>
+<%@ page import="java.util.List" %>
 <%@include file="./Header.jsp"%>
+
+<%
+    List<Article> allA = (List<Article>)request.getAttribute("article");
+%>
 <div class="page-wrapper">
 
   <div class="page-container">
@@ -16,18 +22,18 @@
               <h3 class="text-center title-2">Besoin</h3>
             </div>
             <hr>
-            <form action="" method="post">
+            <form action="InsertBesoinServlet" method="get">
               <div class="form-group">
                 <label for="idarticle" class="control-label mb-1">Article</label>
                 <select id="idarticle" name="idarticle" class="form-control" required>
-                  <% for (int i = 0; i < 2; i++) { %>
-                  <option value="<%= i %>"><%= i %></option>
+                  <% for (int i = 0; i < allA.size(); i++) { %>
+                  <option value="<%out.print(allA.get(i).getId_article());%>"><%out.print(allA.get(i).getNom());%></option>
                   <% } %>
                 </select>
               </div>
               <div class="form-group">
                 <label for="nombre" class="control-label mb-1">Nombre</label>
-                <input id="nombre" name="nombre" type="number" class="form-control">
+                <input id="nombre" name="quantite" type="number" class="form-control">
               </div>
               <div>
                 <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">

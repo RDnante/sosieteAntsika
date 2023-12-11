@@ -26,6 +26,7 @@ public class PageInsertServlet extends HttpServlet {
             requestDispatcher.forward(request,response);
 
         } catch (Exception e) {
+            e.printStackTrace();
             // TODO: handle exception
         }
     }
