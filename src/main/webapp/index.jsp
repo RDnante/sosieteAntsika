@@ -1,13 +1,34 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>JSP - Hello World</title>
-</head>
-<body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-</body>
-</html>
+<%@include file="./Header.jsp"%>
+<div class="page-wrapper">
+
+    <div class="page-container">
+
+        <div class="main-content">
+            <center>
+
+                <body>
+                <h1>Accueil</h1>
+                <br>
+                <div class="table-responsive table--no-card m-b-40">
+                    <table class="table table-borderless table-striped">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Numero</th>
+                            <th>Partie</th>
+                            <th>Nom</th>
+                            <th>Voies</th>
+                            <th>Pourcentage</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                </body>
+            </center>
+        </div>
+    </div>
+
+</div>
+<%@include file="./Footer.jsp"%>
