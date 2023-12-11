@@ -65,7 +65,7 @@ public class Stock_fournisseur {
         this.prix_unitaire = prix_unitaire;
     }
 
-    public Stock_fournisseur[] getAllStockFournisseurByArticle(Connection c, int idArticle)throws Exception{
+    public Stock_fournisseur[] getAllStockFournisseurByArticle(Connection c, int idFournisseur,int idArticle)throws Exception{
         Boolean coTest = false;
         try {
             if (c==null||c.isClosed())
@@ -73,13 +73,12 @@ public class Stock_fournisseur {
                 coTest = true;
 
             Statement st = c.createStatement();
-            String sql = "select * from stock_fournisseur";
+            String sql = "select * from stock_fournisseur where id_article = "+idArticle+" and id_fournisseur ="+idFournisseur;
             ResultSet res = st.executeQuery(sql);
             List<Stock_fournisseur> allSf = new ArrayList<>();
             while (res.next()) {
                 allSf.add(new Stock_fournisseur(res.getInt(1),res.getInt(2),res.getInt(3),res.getDouble(4),res.getDouble(5)));
             }
-            int exct = st.executeUpdate(sql);
             Stock_fournisseur[] all = new Stock_fournisseur[allSf.size()];
             return allSf.toArray(all);
         } catch (Exception e) {
@@ -92,14 +91,14 @@ public class Stock_fournisseur {
         }
     }
 
-    public double getSommeQuantiteStockFournisseur(Connection c, int idArticle)throws Exception{
+    public double getSommeQuantiteStockFournisseur(Connection c, int idFournisseur,int idArticle)throws Exception{
         Boolean coTest = false;
         try {
             if (c==null||c.isClosed())
                 c = (new Connect()).connecter();
                 coTest = true;
 
-            Stock_fournisseur[] allSf = this.getAllStockFournisseurByArticle(c, idArticle);
+            Stock_fournisseur[] allSf = this.getAllStockFournisseurByArticle(c,idFournisseur, idArticle);
             double somme = allSf[0].getQuantite();
             for (int i = 1; i < allSf.length; i++) {
                 somme = somme + allSf[i].getQuantite();
@@ -115,18 +114,70 @@ public class Stock_fournisseur {
         }
     }
 
-    public Boolean verificationStockFournisseur(Connection c, int idArticle, double quantite)throws Exception{
+    public Boolean verificationStockFournisseur(Connection c, int idfournisseur,int idArticle, double quantite)throws Exception{
         Boolean coTest = false;
         try {
             if (c==null||c.isClosed())
                 c = (new Connect()).connecter();
                 coTest = true;
-            double sommeQuantiteStockFourn = this.getSommeQuantiteStockFournisseur(c, idArticle);
+            double sommeQuantiteStockFourn = this.getSommeQuantiteStockFournisseur(c,idfournisseur, idArticle);
             if (sommeQuantiteStockFourn<quantite) {
                 return false;
             }else{
                 return true;
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
+    public Stock_fournisseur getStockFByArticle(Connection c, int idFournisseur,int idArticle, double quantite)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed())
+                c = (new Connect()).connecter();
+                coTest = true;
+            Stock_fournisseur[] allSf = this.getAllStockFournisseurByArticle(c,idFournisseur,idArticle);
+            if (allSf.length!=0){
+                Stock_fournisseur sf = allSf[0];
+                if (sf.getQuantite()>=quantite) {
+                    return sf;
+                }else{
+                    return null;
+                }
+            }else{
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
+    public Stock_fournisseur[] getAllStockDispo(Connection c, int idFournisseur, Service_besoin[] allServiceBesoinFiltrer)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed())
+                c = (new Connect()).connecter();
+                coTest = true;
+            List<Stock_fournisseur> allSf = new ArrayList<>();
+            for (int i = 0; i < allServiceBesoinFiltrer.length; i++) {
+                Stock_fournisseur sf = this.getStockFByArticle(c, idFournisseur,allServiceBesoinFiltrer[i].getId_article(), allServiceBesoinFiltrer[i].getQuantite());
+                if (sf!=null) {
+                    allSf.add(sf);
+                }
+            }
+            Stock_fournisseur[] all = new Stock_fournisseur[allSf.size()];
+            return allSf.toArray(all);
         } catch (Exception e) {
             e.printStackTrace();
             throw e;

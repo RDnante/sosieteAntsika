@@ -35,9 +35,11 @@ public class Proforma {
                 c = (new Connect()).connecter();
                 coTest = true;
 
-            Statement st = c.createStatement();
-            String sql = "insert into service_besoin(id_service,id_article,quantite,date,status) values("+idService+","+idArticle+","+quantite+",DEFAULT,0)";
-            int exct = st.executeUpdate(sql);
+            Service_besoin sb = new Service_besoin();
+            Service_besoin[] sbfiltrer = sb.getAllServiceBesoinFiltre(c, idService);
+            Stock_fournisseur sf = new Stock_fournisseur();
+            Stock_fournisseur[] allSf = sf.getAllStockDispo(c, idFournisseur, sbfiltrer);
+            return new Proforma(id_fournisseur, allSf); 
         } catch (Exception e) {
             e.printStackTrace();
             throw e;

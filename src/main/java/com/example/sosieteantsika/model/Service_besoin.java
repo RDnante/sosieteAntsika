@@ -18,6 +18,16 @@ public class Service_besoin {
     Date date;
     Integer status;
 
+    public Service_besoin(Integer id_service_besoin, Integer id_service, Integer id_article, Double quantite, Date date,
+            Integer status) {
+        this.id_service_besoin = id_service_besoin;
+        this.id_service = id_service;
+        this.id_article = id_article;
+        this.quantite = quantite;
+        this.date = date;
+        this.status = status;
+    }
+
     public Service_besoin() {
     }
 
@@ -96,20 +106,51 @@ public class Service_besoin {
                 coTest = true;
 
             Statement st = c.createStatement();
-            String sql = "select id_article, sum(quantite) from service_besoin ";
+            String sql = "select id_article, sum(quantite) from service_besoin where id_service ="+idService+" and status = 0 group by id_article";
             List<Service_besoin> allSb = new ArrayList<>();
             ResultSet res = st.executeQuery(sql);
             while (res.next()) {
-                allSb.add(new Service_besoin());
+                allSb.add(new Service_besoin(0,idService,res.getInt(1),res.getDouble(2),null,0));
             }
-            int exct = st.executeUpdate(sql);
+            Service_besoin[] all = new Service_besoin[allSb.size()];
+            return allSb.toArray(all);
         } catch (Exception e) {
             e.printStackTrace();
+            throw e;
             // TODO: handle exception
         }finally{
             if (coTest==true)
                 c.close();
         }
     }
+
+
+    public Service_besoin[] getAllServiceBesoin(Connection c, int idService)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed())
+                c = (new Connect()).connecter();
+            coTest = true;
+
+            Statement st = c.createStatement();
+            String sql = "select * from service_besoin where id_service ="+idService+" and status = 0";
+            List<Service_besoin> allSb = new ArrayList<>();
+            ResultSet res = st.executeQuery(sql);
+            while (res.next()) {
+                allSb.add(new Service_besoin(res.getInt(1),res.getInt(2),res.getInt(3),res.getDouble(4),res.getDate(5),res.getInt(6)));
+            }
+            Service_besoin[] all = new Service_besoin[allSb.size()];
+            return allSb.toArray(all);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
+
 }
 

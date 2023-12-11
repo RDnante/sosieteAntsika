@@ -74,7 +74,7 @@ public class Login {
             case 1:
                 return "PageInsertServlet";
             case 2:
-                return "";
+                return "AccueilServlet";
             case 3:
                 return "";
             case 4:

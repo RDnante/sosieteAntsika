@@ -53,12 +53,12 @@
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
                     <li>
-                        <a href="Insert_besoins.jsp">
-                            <i class="fas fa-chart-bar"></i>Inserer Besoin</a>
+                        <a href="ListProformaServlet">
+                            <i class="fas fa-chart-bar"></i>Proforma</a>
                     </li>
                     <li>
                         <a href="">
-                            <i class="fas fa-chart-bar"></i>CC</a>
+                            <i class="fas fa-chart-bar"></i>Bon de commande</a>
                     </li>
 
                 </ul>

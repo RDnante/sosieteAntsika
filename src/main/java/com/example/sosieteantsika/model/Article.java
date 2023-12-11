@@ -67,9 +67,11 @@ public class Article {
     }
 
     public List<Article> getAllArticle(Connection c)throws Exception{
+        Boolean coTest = false;
         try {
             if (c==null||c.isClosed())
                 c = (new Connect()).connecter();
+                coTest = true;
             List<Article> allA = new ArrayList<>();
             Statement st = c.createStatement();
             String sql = "select * from article";
@@ -83,7 +85,8 @@ public class Article {
             throw e;
             // TODO: handle exception
         }finally{
-            c.close();
+            if (coTest==true)
+                c.close();
         }
     }
 }
