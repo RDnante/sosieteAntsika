@@ -67,9 +67,11 @@ public class Service_besoin {
     }
 
     public void insertServiceBesoin(Connection c, int idService, int idArticle, double quantite)throws Exception{
+        Boolean coTest = false;
         try {
             if (c==null||c.isClosed())
                 c = (new Connect()).connecter();
+                coTest = true;
 
             Statement st = c.createStatement();
             String sql = "insert into service_besoin(id_service,id_article,quantite,date,status) values("+idService+","+idArticle+","+quantite+",DEFAULT,0)";
@@ -77,6 +79,10 @@ public class Service_besoin {
         } catch (Exception e) {
             e.printStackTrace();
             // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
         }
     }
 }
+
