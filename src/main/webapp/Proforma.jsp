@@ -1,4 +1,12 @@
+<%@ page import="com.example.sosieteantsika.model.*" %>
 <%@include file="./Header.jsp"%>
+<%
+  try{
+  Proforma pr = (Proforma)request.getAttribute("proforma");
+  Fournisseur f = (Fournisseur) request.getAttribute("fournisseur");
+  Stock_fournisseur[] sf = pr.getAllArticleServiceBesoin();
+  Article a = new Article();
+%>
 <div class="page-wrapper">
 
   <div class="page-container">
@@ -35,7 +43,7 @@
 
                       <div class="row" >
                         <div class="col-lg-11 offset-lg-1">
-                          <h3>Nom Fournisseur</h3>
+                          <h3>Proforma venant de <%out.print(f.getNom());%></h3>
                         </div>
                       </div>
                       <div class="row" >
@@ -61,11 +69,15 @@
                                   </tr>
                                   </thead>
                                   <tbody>
+                                  <% for (int i = 0; i < sf.length; i++) {
+                                    a = a.getarticleById(null,sf[i].getId_article());
+                                  %>
                                   <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><%out.print(a.getNom());%></td>
+                                    <td><%out.print(sf[i].getQuantite());%></td>
+                                    <td><%out.print(sf[i].getPrix_unitaire());%></td>
                                   </tr>
+                                  <%}%>
                                   </tbody>
                                 </table>
                               </div>
@@ -95,4 +107,5 @@
   </div>
 
 </div>
+<%}catch (Exception e){}%>
 <%@include file="./Footer.jsp"%>

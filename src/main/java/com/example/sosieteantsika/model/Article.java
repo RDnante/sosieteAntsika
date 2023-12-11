@@ -89,4 +89,27 @@ public class Article {
                 c.close();
         }
     }
+
+    public Article getarticleById(Connection c,int idArticle)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed())
+                c = (new Connect()).connecter();
+                coTest = true;
+            List<Article> allA = this.getAllArticle(c);
+            for (Article article : allA) {
+                if (article.getId_article()==idArticle) {
+                    return article;
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
 }

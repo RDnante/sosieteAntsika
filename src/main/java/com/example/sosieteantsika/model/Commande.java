@@ -105,4 +105,7 @@ public class Commande {
     public void setId_service_besoin(Integer id_service_besoin) {
         this.id_service_besoin = id_service_besoin;
     }
+
+    // public Stock_fournisseur[] 
+
 }
