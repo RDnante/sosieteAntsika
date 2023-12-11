@@ -22,7 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
+
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -58,15 +59,22 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/IT University/S5/Prog/Election2",
+    "last_opened_file_path": "E:/library/postgresql-42.5.0.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
+
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "oracle",
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -173,8 +181,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1702270893960</updated>
-      <workItem from="1702292830861" duration="233000" />
-      <workItem from="1702293198313" duration="4142000" />
+      <workItem from="1702270895453" duration="1775000" />
+      <workItem from="1702282474728" duration="4394000" />
     </task>
     <servers />
   </component>
