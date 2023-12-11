@@ -31,8 +31,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("service",service);
 
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher(lien);
-            requestDispatcher.forward(request,response);
+            response.sendRedirect(lien);
         }catch (Exception e) {
 
         }

@@ -72,7 +72,7 @@ public class Login {
     public String getLien(Integer id_poste) {
         switch (id_poste) {
             case 1:
-                return "PageInsertSerlvet";
+                return "PageInsertServlet";
             case 2:
                 return "";
             case 3:
