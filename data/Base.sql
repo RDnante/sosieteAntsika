@@ -1,4 +1,4 @@
-create database syscom;
+    create database syscom;
 \c syscom
 
 create table poste(
@@ -30,7 +30,7 @@ CREATE TABLE type_gestion(
 
 CREATE TABLE unite(
     id_unite SERIAL PRIMARY KEY,
-    libelle VARCHAR(50)r
+    libelle VARCHAR(50)
 );
 
 create table article (
