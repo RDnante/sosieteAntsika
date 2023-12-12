@@ -97,4 +97,23 @@ public class Commande_livraison {
         }
     }
 
+    public void envoyerBonDeLivraison(Connection c, int idFournisseur)throws Exception{
+        Boolean coTest = false;
+        Commande_livraison[] cl = this.getAllCommandeLivraison(c, idFournisseur);
+        try {
+            if (c==null||c.isClosed()){
+                c = (new Connect()).connecter();
+                coTest = true;}
+            Statement st = c.createStatement();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
 }
