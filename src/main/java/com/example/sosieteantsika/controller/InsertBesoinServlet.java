@@ -21,14 +21,14 @@ public class InsertBesoinServlet extends HttpServlet {
             Service_besoin sb = new Service_besoin();
             HttpSession session = request.getSession();
             Service s = (Service)session.getAttribute("service");
-            int id_article = Integer.parseInt((String)request.getAttribute("idArticle"));            
-            double quantite = Double.parseDouble((String)request.getAttribute("quantite"));
-
+            int id_article = Integer.parseInt((String)request.getParameter("idarticle"));
+            double quantite = Double.parseDouble((String)request.getParameter("quantite"));
+            System.out.println(id_article);
             sb.insertServiceBesoin(c, s.getId_service(), id_article, quantite);
-            String lien = "Insert_besoins";
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher(lien+".jsp");
-            requestDispatcher.forward(request,response);                                                                                                                                                                                                                                                                                                                                                                                                                             
+            String lien = "PageInsertServlet";
+            response.sendRedirect(lien);
         } catch (Exception e) {
+            e.printStackTrace();
             // TODO: handle exception
         }
     }

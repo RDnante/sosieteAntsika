@@ -2,8 +2,11 @@ package com.example.sosieteantsika.model;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.example.sosieteantsika.connection.Connect;
 
@@ -75,6 +78,30 @@ public class Service_besoin {
 
             Statement st = c.createStatement();
             String sql = "insert into service_besoin(id_service,id_article,quantite,date,status) values("+idService+","+idArticle+","+quantite+",DEFAULT,0)";
+            int exct = st.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
+    public Service_besoin[] getAllServiceBesoinFiltre(Connection c, int idService)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed())
+                c = (new Connect()).connecter();
+                coTest = true;
+
+            Statement st = c.createStatement();
+            String sql = "select id_article, sum(quantite) from service_besoin ";
+            List<Service_besoin> allSb = new ArrayList<>();
+            ResultSet res = st.executeQuery(sql);
+            while (res.next()) {
+                allSb.add(new Service_besoin());
+            }
             int exct = st.executeUpdate(sql);
         } catch (Exception e) {
             e.printStackTrace();
