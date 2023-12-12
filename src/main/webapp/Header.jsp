@@ -12,7 +12,9 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Resultats des Elections du 16 Novembre 2023</title>
+    <title>SosieteAntsika</title>
+    <link href="./styles/images/icon/logo-mini.png" rel="icon">
+
 
     <!-- Fontfaces CSS-->
     <link href="./styles/css/font-face.css" rel="stylesheet" media="all">
