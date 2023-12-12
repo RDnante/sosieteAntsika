@@ -13,22 +13,7 @@
                 <body>
                 <h1>Accueil</h1>
                 <br>
-                <div class="table-responsive table--no-card m-b-40">
-                    <table class="table table-borderless table-striped">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>Numero</th>
-                            <th>Partie</th>
-                            <th>Nom</th>
-                            <th>Voies</th>
-                            <th>Pourcentage</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
+
                 </body>
             </center>
         </div>
