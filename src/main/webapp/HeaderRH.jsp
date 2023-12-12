@@ -54,11 +54,11 @@
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
                     <li>
-                        <a href="ListProformaServlet">
+                        <a href="ListProformaServiceRHServlet">
                             <i class="fas fa-chart-bar"></i>Proforma</a>
                     </li>
                     <li>
-                        <a href="ListBonDeCommandeServlet">
+                        <a href="ListBonDeCommandeServiceRHServlet">
                             <i class="fas fa-chart-bar"></i>Bon de commande</a>
                     </li>
 

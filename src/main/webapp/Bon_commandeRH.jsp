@@ -1,8 +1,10 @@
 <%@ page import="com.example.sosieteantsika.model.Commande" %>
 <%@ page import="com.example.sosieteantsika.model.Service" %>
-<%@include file="./Header.jsp"%>
+<%@include file="./HeaderRH.jsp"%>
 <%
   Commande[] allC = (Commande[]) request.getAttribute("commande");
+  int idService = (Integer) request.getAttribute("idService");
+  int idFournisseur = (Integer) request.getAttribute("idFournisseur");
 %>
 <div class="page-wrapper">
 
@@ -127,6 +129,9 @@
                         <div class="col-lg-8 offset-lg-4">
                           <p>Arrete le present bon de commande a la somme de : <span style="color: #2d2e33; font-size: large"></span></p>
                         </div>
+                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                          <button id="btnpdf" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><a href="ConfirmationBonDeCommandeServlet?idS=<%out.print(idService);%>&idF=<%out.print(idFournisseur);%>">Confirmer</a></button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -139,6 +144,7 @@
           </div>
         </div>
         </body>
+
       </center>
     </div>
   </div>

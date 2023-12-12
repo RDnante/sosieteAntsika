@@ -1,9 +1,16 @@
 package com.example.sosieteantsika.model;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import com.example.sosieteantsika.connection.Connect;
 
 public class Commande {
-    Integer id_commande;
+    int id_commande;
     String nom;
     Date date;
     boolean livraison_partielle;
@@ -13,16 +20,31 @@ public class Commande {
     Double quantite;
     Double tva;
     Double ttc;
-    Integer id_service_besoin;
+    int id_service_besoin;
+
+    public Commande(int id_commande, String nom, Date date, boolean livraison_partielle, String mode_paiement,
+            String categorie, String designation, Double quantite, Double tva, Double ttc, int id_service_besoin) {
+        this.id_commande = id_commande;
+        this.nom = nom;
+        this.date = date;
+        this.livraison_partielle = livraison_partielle;
+        this.mode_paiement = mode_paiement;
+        this.categorie = categorie;
+        this.designation = designation;
+        this.quantite = quantite;
+        this.tva = tva;
+        this.ttc = ttc;
+        this.id_service_besoin = id_service_besoin;
+    }
 
     public Commande() {
     }
 
-    public Integer getId_commande() {
+    public int getId_commande() {
         return id_commande;
     }
 
-    public void setId_commande(Integer id_commande) {
+    public void setId_commande(int id_commande) {
         this.id_commande = id_commande;
     }
 
@@ -42,7 +64,7 @@ public class Commande {
         this.date = date;
     }
 
-    public boolean isLivraison_partielle() {
+    public boolean getLivraison_partielle() {
         return livraison_partielle;
     }
 
@@ -98,14 +120,81 @@ public class Commande {
         this.ttc = ttc;
     }
 
-    public Integer getId_service_besoin() {
+    public int getId_service_besoin() {
         return id_service_besoin;
     }
 
-    public void setId_service_besoin(Integer id_service_besoin) {
+    public void setId_service_besoin(int id_service_besoin) {
         this.id_service_besoin = id_service_besoin;
     }
 
-    // public Stock_fournisseur[] 
+    public Commande[] getAllCommande(Connection c,int idService)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed()){
+                c = (new Connect()).connecter();
+                coTest = true;}
+            Service_besoin sb = new Service_besoin();
+            Stock_fournisseur sf = new Stock_fournisseur();
+            Categorie ca = new Categorie();
+            Article a = new Article();
+            Service_besoin[] allSb = sb.getAllServiceBesoin(c, idService);
+            List<Commande> allC = new ArrayList<>();
+            Fournisseur f = new Fournisseur();
+            double quantite = 0;
+            double tva = 0;
+            double ttc = 0;
+            for (int i = 0; i < allSb.length; i++) {
+                sf = sf.moinsDisant(c, allSb[i].getId_article());
+                f = f.getFournisseurById(c, sf.getId_fournisseur());
+                a = a.getarticleById(c, allSb[i].getId_article());
+                ca = ca.getCategorieById(c, a.getId_categorie());
+                quantite = allSb[i].getQuantite();
+                tva = sf.getPrix_unitaire();
+                ttc = sf.getPrix_unitaire() + (sf.getPrix_unitaire()*20)/100;
+                allC.add(new Commande(0,f.getNom(),allSb[i].getDate(),false,"Espece",ca.getNom(),a.getNom(),quantite,tva, ttc, allSb[i].getId_service_besoin()));
+            }
+            Commande[] all = new Commande[allC.size()];
+            return allC.toArray(all);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
+    public Commande[] getAllCommandeByFournisseur(Connection c, int idService,int idFournisseur)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed()){
+                c = (new Connect()).connecter();
+                coTest = true;}
+            Fournisseur f = new Fournisseur();
+            f = f.getFournisseurById(c, idFournisseur);
+            Commande[] allC = this.getAllCommande(c, idService);
+            List<Commande> all = new ArrayList<>();
+            for (int i = 0; i < allC.length; i++) {
+                if (allC[i].getNom().equals(f.getNom())) {
+                    all.add(allC[i]);
+                }
+            }
+            Commande[] allc = new Commande[all.size()];
+            return all.toArray(allc);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
+
+
+    
 
 }

@@ -5,6 +5,8 @@ import com.example.sosieteantsika.connection.Connect;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Service {
     int id_service;
@@ -55,5 +57,30 @@ public class Service {
         }
 
         return service;
+    }
+
+    public Service[] getAllService(Connection c)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed()){
+                c = (new Connect()).connecter();
+                coTest = true;}
+            List<Service> allS = new ArrayList<>();
+            Statement st = c.createStatement();
+            String sql = "select * from service";
+            ResultSet res = st.executeQuery(sql);
+            while (res.next()) {
+                allS.add(new Service(res.getInt(1),res.getString(2)));
+            }
+            Service[] all = new Service[allS.size()];
+            return allS.toArray(all);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
     }
 }

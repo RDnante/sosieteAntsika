@@ -49,9 +49,9 @@ public class Fournisseur {
     public Fournisseur[] getAllFournisseur(Connection c) throws Exception {
         Boolean coTest = false;
         try {
-            if (c == null || c.isClosed())
+            if (c == null || c.isClosed()){
                 c = (new Connect()).connecter();
-            coTest = true;
+                coTest = true;}
             Statement st = c.createStatement();
             String sql = "select * from fournisseur";
             ResultSet res = st.executeQuery(sql);
@@ -74,8 +74,9 @@ public class Fournisseur {
     public Fournisseur getFournisseurById(Connection c, int id_fournisseur) throws Exception {
         Boolean coTest = false;
         try {
-            if (c == null || c.isClosed())
+            if (c == null || c.isClosed()){
                 c = (new Connect()).connecter();
+                coTest = true;}
             Fournisseur[] allF = this.getAllFournisseur(c);
             for (int i = 0; i < allF.length; i++) {
                 if (allF[i].getId_fournisseur() == id_fournisseur)

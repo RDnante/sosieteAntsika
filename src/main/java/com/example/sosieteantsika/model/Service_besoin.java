@@ -82,9 +82,10 @@ public class Service_besoin {
     public void insertServiceBesoin(Connection c, int idService, int idArticle, double quantite)throws Exception{
         Boolean coTest = false;
         try {
-            if (c==null||c.isClosed())
+            if (c==null||c.isClosed()) {
                 c = (new Connect()).connecter();
                 coTest = true;
+            }
 
             Statement st = c.createStatement();
             String sql = "insert into service_besoin(id_service,id_article,quantite,date,status) values("+idService+","+idArticle+","+quantite+",DEFAULT,0)";
@@ -101,9 +102,10 @@ public class Service_besoin {
     public Service_besoin[] getAllServiceBesoinFiltre(Connection c, int idService)throws Exception{
         Boolean coTest = false;
         try {
-            if (c==null||c.isClosed())
+            if (c==null||c.isClosed()) {
                 c = (new Connect()).connecter();
                 coTest = true;
+            }
 
             Statement st = c.createStatement();
             String sql = "select id_article, sum(quantite) from service_besoin where id_service ="+idService+" and status = 0 group by id_article";
@@ -124,13 +126,13 @@ public class Service_besoin {
         }
     }
 
-
+    //status 0 en attente, 5 confirmer bondecommande fa mbola tsy ao anaty stock, 10 anaty stock
     public Service_besoin[] getAllServiceBesoin(Connection c, int idService)throws Exception{
         Boolean coTest = false;
         try {
-            if (c==null||c.isClosed())
+            if (c==null||c.isClosed()){
                 c = (new Connect()).connecter();
-            coTest = true;
+                coTest = true;}
 
             Statement st = c.createStatement();
             String sql = "select * from service_besoin where id_service ="+idService+" and status = 0";

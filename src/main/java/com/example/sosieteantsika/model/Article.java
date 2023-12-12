@@ -69,9 +69,9 @@ public class Article {
     public List<Article> getAllArticle(Connection c)throws Exception{
         Boolean coTest = false;
         try {
-            if (c==null||c.isClosed())
+            if (c==null||c.isClosed()){
                 c = (new Connect()).connecter();
-                coTest = true;
+                coTest = true;}
             List<Article> allA = new ArrayList<>();
             Statement st = c.createStatement();
             String sql = "select * from article";
