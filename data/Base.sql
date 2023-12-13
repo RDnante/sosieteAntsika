@@ -123,7 +123,7 @@ CREATE TABLE mouvement_sortie(
 
 create table bon_de_livraison(
     id_bon_de_livraison serial PRIMARY KEY,
-    date DATE
+    date DATE DEFAULT CURRENT_DATE
 );
 
 create table bon_de_livraison_detail(

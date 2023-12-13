@@ -174,5 +174,34 @@ public class Service_besoin {
     }
 
 
+    public Service_besoin verificationServiceAchat(Connection c, int idServiceBesoin)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed()){
+                c = (new Connect()).connecter();
+                coTest = true;}
+
+            Statement st = c.createStatement();
+            String sql = "select * from service_besoin where id_service_besoin ="+idServiceBesoin;
+            ResultSet res = st.executeQuery(sql);
+            Service_besoin sb = new Service_besoin();
+            while (res.next()) {
+                sb = new Service_besoin(res.getInt(1), res.getInt(2), res.getInt(3), res.getDouble(4), res.getDate(5), res.getInt(6));
+            }
+            if (sb.getId_service()==6) {
+                return sb;
+            }
+                return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
+
 }
 
