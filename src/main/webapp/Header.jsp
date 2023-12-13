@@ -81,7 +81,36 @@
                                 <i class="zmdi zmdi-search"></i>
                             </button>
                         </form>
-
+                        <div class="header-button">
+                            <div class="account-wrap">
+                                <div class="account-item clearfix js-item-menu">
+                                    <div class="image">
+                                        <img src="./styles/images/icon/image.webp" alt="Profil" />
+                                    </div>
+                                    <div class="content">
+                                        <a class="js-acc-btn" href="#">ANARANLE BRANCHE</a>
+                                    </div>
+                                    <div class="account-dropdown js-dropdown">
+                                        <div class="info clearfix">
+                                            <div class="image">
+                                                <a href="#">
+                                                    <img src="./styles/images/icon/image.webp" alt="Profil" />
+                                                </a>
+                                            </div>
+                                            <div class="content">
+                                                <h5 class="name">
+                                                    <a href="#">ANARANLE BRANCHE</a>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="account-dropdown__footer">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-power"></i>Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
