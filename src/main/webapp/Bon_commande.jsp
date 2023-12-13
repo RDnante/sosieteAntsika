@@ -142,6 +142,13 @@
       </center>
     </div>
   </div>
+  <script src="./styles/html2pdf/dist/html2pdf.bundle.js"></script>
+  <script>
+    document.getElementById("btnpdf").addEventListener('click', function () {
+      var element = document.getElementById("boncommande");
+      html2pdf(element);
+    });
+  </script>
 
 </div>
 <%@include file="./Footer.jsp"%>
