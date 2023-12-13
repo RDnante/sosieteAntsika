@@ -130,7 +130,7 @@
                           <p>Arrete le present bon de commande a la somme de : <span style="color: #2d2e33; font-size: large"></span></p>
                         </div>
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                          <button id="btnpdf" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><a href="ConfirmationBonDeCommandeServlet?idS=<%out.print(idService);%>&idF=<%out.print(idFournisseur);%>">Confirmer</a></button>
+                          <button id="btnconfirmer" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><a href="ConfirmationBonDeCommandeServlet?idS=<%out.print(idService);%>&idF=<%out.print(idFournisseur);%>">Confirmer</a></button>
                         </div>
                       </div>
                     </div>
@@ -148,6 +148,14 @@
       </center>
     </div>
   </div>
+
+  <script src="./styles/html2pdf/dist/html2pdf.bundle.js"></script>
+  <script>
+    document.getElementById("btnpdf").addEventListener('click', function () {
+      var element = document.getElementById("boncommande");
+      html2pdf(element);
+    });
+  </script>
 
 </div>
 <%@include file="./Footer.jsp"%>
