@@ -1,7 +1,8 @@
 <%@ page import="com.example.sosieteantsika.model.Fournisseur" %>
-<%@include file="./Header.jsp"%>
+<%@ page import="com.example.sosieteantsika.model.Service" %>
+<%@include file="./HeaderRH.jsp"%>
 <%
-  Fournisseur[] allF = (Fournisseur[])request.getAttribute("fournisseur");
+  Service[] allS = (Service[])request.getAttribute("allService");
 %>
 <div class="page-wrapper">
 
@@ -13,7 +14,7 @@
         <h1></h1>
         <br>
           <div class="card">
-            <div class="card-header">Liste Fournisseur</div>
+            <div class="card-header">Liste service</div>
             <div class="card-body">
               <div class="card-title">
                 <h3 class="text-center title-2">Proforma</h3>
@@ -23,17 +24,17 @@
                   <table class="table table-data2">
                     <thead>
                     <tr>
-                      <th>Fournisseur</th>
+                      <th>Tout les services</th>
                       <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <% for (int i = 0; i < allF.length; i++) { %>
+                    <% for (int i = 0; i < allS.length; i++) { %>
                     <tr class="tr-shadow">
-                      <td><%out.print(allF[i].getNom());%></td>
+                      <td><%out.print(allS[i].getNom());%></td>
                       <td>
                         <div class="table-data-feature">
-                          <button class="btn btn-info" data-toggle="tooltip" data-placement="top" style="color: white"><a href="ProformaServlet?id=<%out.print(allF[i].getId_fournisseur());%>">VOIR PROFORMA</a></button>
+                          <button class="btn btn-info" data-toggle="tooltip" data-placement="top" style="color: white"><a href="ListProformaRHServlet?id=<%out.print(allS[i].getId_service());%>">VOIR FOURNISSEUR</a></button>
                         </div>
                       </td>
                     </tr>

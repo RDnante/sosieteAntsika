@@ -31,9 +31,9 @@ public class Proforma {
     public Proforma getProformaByFournisseur(Connection c,int idService,int idFournisseur)throws Exception{
         Boolean coTest = false;
         try {
-            if (c==null||c.isClosed())
+            if (c==null||c.isClosed()){
                 c = (new Connect()).connecter();
-                coTest = true;
+                coTest = true;}
 
             Service_besoin sb = new Service_besoin();
             Service_besoin[] sbfiltrer = sb.getAllServiceBesoinFiltre(c, idService);

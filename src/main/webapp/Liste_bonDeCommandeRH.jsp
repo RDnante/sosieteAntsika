@@ -1,5 +1,5 @@
 <%@ page import="com.example.sosieteantsika.model.Fournisseur" %>
-<%@include file="./Header.jsp"%>
+<%@include file="./HeaderRH.jsp"%>
 <%
   Fournisseur[] allF = (Fournisseur[])request.getAttribute("fournisseur");
 %>
@@ -16,7 +16,7 @@
             <div class="card-header">Liste Fournisseur</div>
             <div class="card-body">
               <div class="card-title">
-                <h3 class="text-center title-2">Proforma</h3>
+                <h3 class="text-center title-2">Bon de commande</h3>
               </div>
               <hr>
               <div class="table-responsive table-responsive-data2">
@@ -33,7 +33,7 @@
                       <td><%out.print(allF[i].getNom());%></td>
                       <td>
                         <div class="table-data-feature">
-                          <button class="btn btn-info" data-toggle="tooltip" data-placement="top" style="color: white"><a href="ProformaServlet?id=<%out.print(allF[i].getId_fournisseur());%>">VOIR PROFORMA</a></button>
+                          <button class="btn btn-info" data-toggle="tooltip" data-placement="top" style="color: white"><a href="BonDeCommandeRHServlet?id=<%out.print(allF[i].getId_fournisseur());%>">VOIR BON DE COMMANDE</a></button>
                         </div>
                       </td>
                     </tr>

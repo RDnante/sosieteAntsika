@@ -1,5 +1,5 @@
 <%@ page import="com.example.sosieteantsika.model.Fournisseur" %>
-<%@include file="./Header.jsp"%>
+<%@include file="./HeaderRH.jsp"%>
 <%
   Fournisseur[] allF = (Fournisseur[])request.getAttribute("fournisseur");
 %>
@@ -33,7 +33,7 @@
                       <td><%out.print(allF[i].getNom());%></td>
                       <td>
                         <div class="table-data-feature">
-                          <button class="btn btn-info" data-toggle="tooltip" data-placement="top" style="color: white"><a href="ProformaServlet?id=<%out.print(allF[i].getId_fournisseur());%>">VOIR PROFORMA</a></button>
+                          <button class="btn btn-info" data-toggle="tooltip" data-placement="top" style="color: white"><a href="ProformaRHServlet?id=<%out.print(allF[i].getId_fournisseur());%>">VOIR PROFORMA</a></button>
                         </div>
                       </td>
                     </tr>

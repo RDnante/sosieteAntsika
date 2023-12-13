@@ -4,10 +4,13 @@ insert into poste(nom) values
                  ('achat'),
                  ('vente');
 
+insert into poste(nom) values ('RH');
+
 insert into service values (default,'economique');
 insert into service values (default,'securite');
 insert into service values (default,'magasin');
 insert into service values (default,'RH');
+insert into service values (default,'Finance');
 
 insert into login(id_service,id_poste,password) values
                  (1,1,'eco123E'),
@@ -18,7 +21,7 @@ insert into login(id_service,id_poste,password) values
                  (3,2,'mag123'),
                  (3,3,'mag123A'),
                  (3,4,'mag123V');
-insert into login(id_service,id_poste,password) values (4,2,'RH123');
+insert into login(id_service,id_poste,password) values (4,5,'RH123');
 
 INSERT INTO unite(libelle) VALUES
                 ('unite'),

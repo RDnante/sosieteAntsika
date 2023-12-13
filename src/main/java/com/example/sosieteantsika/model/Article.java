@@ -69,9 +69,9 @@ public class Article {
     public List<Article> getAllArticle(Connection c)throws Exception{
         Boolean coTest = false;
         try {
-            if (c==null||c.isClosed())
+            if (c==null||c.isClosed()){
                 c = (new Connect()).connecter();
-                coTest = true;
+                coTest = true;}
             List<Article> allA = new ArrayList<>();
             Statement st = c.createStatement();
             String sql = "select * from article";
@@ -80,6 +80,29 @@ public class Article {
                 allA.add(new Article(res.getInt(1),res.getInt(2),res.getString(3),res.getInt(4),res.getInt(5)));
             }
             return allA;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
+    public Article getarticleById(Connection c,int idArticle)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed())
+                c = (new Connect()).connecter();
+                coTest = true;
+            List<Article> allA = this.getAllArticle(c);
+            for (Article article : allA) {
+                if (article.getId_article()==idArticle) {
+                    return article;
+                }
+            }
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
             throw e;

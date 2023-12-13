@@ -82,7 +82,8 @@ create table commande(
 create table bon_de_commande (
     id_bon_de_commande serial primary key,
     id_fournisseur int references fournisseur(id_fournisseur),
-    date_confirmation DATE DEFAULT CURRENT_DATE
+    date_confirmation DATE DEFAULT CURRENT_DATE,
+    status int
 );
 
 create table bon_de_commande_commandes (
@@ -118,4 +119,15 @@ CREATE TABLE mouvement_sortie(
     FOREIGN KEY (id_article) REFERENCES article(id_article),
     FOREIGN KEY (id_entree_stock) REFERENCES entree_stock(id_entree_stock),
     FOREIGN KEY (id_sortie_stock) REFERENCES sortie_stock(id_sortie_stock)
+);
+
+create table bon_de_livraison(
+    id_bon_de_livraison serial PRIMARY KEY,
+    date DATE
+);
+
+create table bon_de_livraison_detail(
+      id_bon_de_livraison_detail serial primary key,
+      id_bon_de_livraison int references bon_de_livraison(id_bon_de_livraison),
+      id_bon_de_commande int references bon_de_commande(id_bon_de_commande)
 );

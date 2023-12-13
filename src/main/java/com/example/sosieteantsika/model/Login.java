@@ -79,6 +79,8 @@ public class Login {
                 return "";
             case 4:
                 return "";
+            case 5:
+                return "RHAccueilServlet";
             default:
                 return "index";
         }
