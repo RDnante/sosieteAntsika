@@ -193,6 +193,29 @@ public class Commande {
         }
     }
 
+    public Commande getCommandeById(Connection c, int idCommande)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed()){
+                c = (new Connect()).connecter();
+                coTest = true;}
+            Statement st = c.createStatement();
+            String sql = "select * from commande where id_commande="+idCommande;
+            ResultSet res = st.executeQuery(sql);
+            while (res.next()) {
+                return new Commande(res.getInt(1), res.getString(2), res.getDate(3), res.getBoolean(4), res.getString(5), res.getString(6), res.getString(7), res.getDouble(8), res.getDouble(9), res.getDouble(10), res.getInt(11));
+            }
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
 
 
     

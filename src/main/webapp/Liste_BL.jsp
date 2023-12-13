@@ -10,10 +10,10 @@
                 <h1></h1>
                 <br>
                 <div class="card">
-                    <div class="card-header">Liste Bon de commande</div>
+                    <div class="card-header">Liste Bon de Livraison</div>
                     <div class="card-body">
                         <div class="card-title">
-                            <h3 class="text-center title-2">Bon de commande</h3>
+                            <h3 class="text-center title-2">Bon de Livraison</h3>
                         </div>
                         <hr>
                         <div class="table-responsive table-responsive-data2">

@@ -1,0 +1,3 @@
+create or replace view commande_livraison as 
+select bon_de_commande.id_bon_de_commande,bon_de_commande.date_confirmation, bon_de_commande.id_fournisseur, bon_de_commande_commandes.id_commande from bon_de_commande_commandes, bon_de_commande 
+where bon_de_commande.id_bon_de_commande = bon_de_commande_commandes.id_bon_de_commande;

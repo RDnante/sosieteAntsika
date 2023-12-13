@@ -1,5 +1,7 @@
 package com.example.sosieteantsika.model;
 
+import java.sql.Connection;
+
 public class Bon_de_commande_commandes {
     Integer id_bon_de_commande_commande;
     Integer id_bon_de_commande;
@@ -31,4 +33,8 @@ public class Bon_de_commande_commandes {
     public void setId_commande(Integer id_commande) {
         this.id_commande = id_commande;
     }
+
+    // public Commande[] getAllCommandeLivraison(Connection c, int idFournisseur)throws Exception{
+        
+    // }
 }

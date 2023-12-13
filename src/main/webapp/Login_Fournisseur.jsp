@@ -58,11 +58,11 @@
             <form action="./LoginServlet" method="post">
               <div class="form-group">
                 <label>Identifiant</label>
-                <input class="au-input au-input--full" type="text" name="id" placeholder="Identifiant">
+                <input class="au-input au-input--full" type="text" name="nom" placeholder="Identifiant">
               </div>
               <div class="form-group">
                 <label>Password</label>
-                <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                <input class="au-input au-input--full" type="password" name="mdp" placeholder="Password">
               </div>
               <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
             </form>
