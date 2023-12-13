@@ -13,7 +13,7 @@
         <h1></h1>
         <br>
           <div class="card">
-            <div class="card-header">Liste Fournisseur</div>
+            <div class="card-header">Liste Bon de commande</div>
             <div class="card-body">
               <div class="card-title">
                 <h3 class="text-center title-2">Bon de commande</h3>
