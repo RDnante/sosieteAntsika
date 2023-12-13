@@ -30,7 +30,7 @@ public class LoginFournisseurServlet extends HttpServlet {
 
             response.sendRedirect("acceuil_fournisseur.jsp");
         } catch (Exception e) {
-            response.sendRedirect("Login_fournisseur.jsp");
+            response.sendRedirect("Login_Fournisseur.jsp");
         }
     }
 }

@@ -55,7 +55,7 @@
             </a>
           </div>
           <div class="login-form">
-            <form action="./LoginServlet" method="post">
+            <form action="./LoginFournisseurServlet" method="post">
               <div class="form-group">
                 <label>Identifiant</label>
                 <input class="au-input au-input--full" type="text" name="nom" placeholder="Identifiant">
