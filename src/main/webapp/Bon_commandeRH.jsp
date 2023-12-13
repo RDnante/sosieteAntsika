@@ -129,8 +129,8 @@
                         <div class="col-lg-8 offset-lg-4">
                           <p>Arrete le present bon de commande a la somme de : <span style="color: #2d2e33; font-size: large"></span></p>
                         </div>
-                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                          <button id="btnpdf" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><a href="ConfirmationBonDeCommandeServlet?idS=<%out.print(idService);%>&idF=<%out.print(idFournisseur);%>">Confirmer</a></button>
+                        <div class="user-data__footer">
+                          <button class="au-btn au-btn-load"><a href="ConfirmationBonDeCommandeServlet?idS=<%out.print(idService);%>&idF=<%out.print(idFournisseur);%>">Confirmer</a></button>
                         </div>
                       </div>
                     </div>
