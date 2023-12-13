@@ -153,6 +153,26 @@ public class Service_besoin {
         }
     }
 
+    public void updateStatus(Connection c, int status, int idServiceBesoin)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed()){
+                c = (new Connect()).connecter();
+                coTest = true;}
+
+            Statement st = c.createStatement();
+            String sql = "update service_besoin set status="+status+" where id_service_besoin = "+idServiceBesoin;
+            int ok = st.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
 
 }
 

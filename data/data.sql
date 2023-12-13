@@ -1,27 +1,26 @@
 insert into poste(nom) values
                  ('employee'),
-                 ('chef'),
-                 ('achat'),
-                 ('vente');
-
+                 ('chef');
+insert into poste(nom) values ('achat');
+insert into poste(nom) values ('vente');
 insert into poste(nom) values ('RH');
 
 insert into service values (default,'economique');
 insert into service values (default,'securite');
 insert into service values (default,'magasin');
 insert into service values (default,'RH');
-insert into service values (default,'Finance');
+insert into service values (default,'Service achat');
+insert into service values (default,'Service vente');
 
 insert into login(id_service,id_poste,password) values
                  (1,1,'eco123E'),
                  (1,2,'eco123'),
                  (2,1,'secu123E'),
-                 (2,2,'secu123'),
-                 (3,1,'mag123E'),
-                 (3,2,'mag123'),
-                 (3,3,'mag123A'),
-                 (3,4,'mag123V');
+                 (2,2,'secu123');
+
 insert into login(id_service,id_poste,password) values (4,5,'RH123');
+insert into login(id_service,id_poste,password) values (5,1,'A123');
+insert into login(id_service,id_poste,password) values (6,4,'V123');
 
 INSERT INTO unite(libelle) VALUES
                 ('unite'),

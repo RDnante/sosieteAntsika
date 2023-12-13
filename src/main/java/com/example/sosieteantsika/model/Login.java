@@ -69,6 +69,30 @@ public class Login {
 
         return valiny;
     }
+
+    public Fournisseur loginFournisseur(String nom, String mdp) throws Exception {
+        Fournisseur valiny = null;
+
+        Connection connection = null;
+        try {
+            connection = new Connect().connecter();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select * from fournisseur where nom ='"+nom+"' and mdp = '"+mdp+"'");
+            resultSet.next();
+            valiny = new Fournisseur();
+            valiny.setId_fournisseur(resultSet.getInt("id_fournisseur"));
+            valiny.setNom(resultSet.getString("nom"));
+            valiny.setMdp(resultSet.getString("mdp"));
+        }catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("pas fournisseur dans ce nom");
+        }
+        finally {
+            connection.close();
+        }
+
+        return valiny;
+    }
     public String getLien(Integer id_poste) {
         switch (id_poste) {
             case 1:
