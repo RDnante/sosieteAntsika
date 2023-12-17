@@ -146,16 +146,40 @@ public class Commande_livraison {
         }
     }
 
-    public void envoyerBonDeLivraison(Connection c, int idFournisseur)throws Exception{
+    public Commande_livraison[] getcl(Date d, Commande_livraison[] allcl){
+        List<Commande_livraison> all = new ArrayList<>();
+        for (int i = 0; i < allcl.length; i++) {
+            if (allcl[i].getDate_confirmation().equals(d)){
+                all.add(allcl[i]);
+            }
+        }
+        Commande_livraison[] a = new Commande_livraison[all.size()];
+        return all.toArray(a);
+    }
+
+    public Commande[] getc(Date d, Commande[] allc){
+        List<Commande> all = new ArrayList<>();
+        for (int i = 0; i < allc.length; i++) {
+            if (allc[i].getDate().equals(d)){
+                all.add(allc[i]);
+            }
+        }
+        Commande[] a = new Commande[all.size()];
+        return all.toArray(a);
+    }
+
+
+
+    public void envoyerBonDeLivraison(Connection c, int idFournisseur,Date d)throws Exception{
         Boolean coTest = false;
-        Commande_livraison[] cl = this.getAllCommandeLivraison(c, idFournisseur);
-        Commande[] allC = this.getAllCommandeCommandeLivraison(c, idFournisseur);
+        Commande_livraison[] cl = getcl(d,this.getAllCommandeLivraison(c, idFournisseur));
+        Commande[] allC =getc(d,this.getAllCommandeCommandeLivraison(c, idFournisseur));
         try {
             if (c==null||c.isClosed()){
                 c = (new Connect()).connecter();
                 coTest = true;}
             Statement st = c.createStatement();
-            String sql1 = "insert into bon_de_livraison(date) values(DEFAULT)";
+            String sql1 = "insert into bon_de_livraison(date,dateBDC) values(DEFAULT,'"+cl[0].getDate_confirmation()+"')";
             int ok = st.executeUpdate(sql1);
             String sql2 = "select max(id_bon_de_livraison) from bon_de_livraison";
             ResultSet res = st.executeQuery(sql2);
@@ -187,6 +211,31 @@ public class Commande_livraison {
         }finally{
             if (coTest==true)
                 c.close();
+        }
+    }
+
+    public Commande_livraison[] verification(Connection c, Commande_livraison[] allcl)throws Exception{
+        try{
+            Bon_de_livraison[] all = (new Bon_de_livraison()).getAllBL(c);
+            List<Commande_livraison> cl = new ArrayList<>();
+            int test =0;
+            for (int i = 0; i < allcl.length; i++) {
+                test =0;
+                for (int j = 0; j < all.length; j++) {
+                    if (allcl[i].getDate_confirmation().equals(all[j].getDateBDC())){
+                        System.out.println("ato");
+                        test=1;
+                    }
+                }
+                if (test==0){
+                    cl.add(allcl[i]);
+                }
+            }
+            Commande_livraison[] rep = new Commande_livraison[cl.size()];
+            return cl.toArray(rep);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw e;
         }
     }
 

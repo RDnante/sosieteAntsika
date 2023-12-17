@@ -126,6 +126,8 @@ create table bon_de_livraison(
     date DATE DEFAULT CURRENT_DATE
 );
 
+    alter table bon_de_livraison add column dateBDC DATE;
+
 create table bon_de_livraison_detail(
       id_bon_de_livraison_detail serial primary key,
       id_bon_de_livraison int references bon_de_livraison(id_bon_de_livraison),

@@ -2,6 +2,7 @@
 <%@include file="./HeaderRH.jsp"%>
 <%
   Fournisseur[] allF = (Fournisseur[])request.getAttribute("fournisseur");
+  int id = (Integer)request.getAttribute("service");
 %>
 <div class="page-wrapper">
 
@@ -33,7 +34,7 @@
                       <td><%out.print(allF[i].getNom());%></td>
                       <td>
                         <div class="table-data-feature">
-                          <button class="btn btn-info" data-toggle="tooltip" data-placement="top" style="color: white"><a href="BonDeCommandeRHServlet?id=<%out.print(allF[i].getId_fournisseur());%>">VOIR BON DE COMMANDE</a></button>
+                          <button class="btn btn-info" data-toggle="tooltip" data-placement="top" style="color: white"><a href="BonDeCommandeRHServlet?id=<%out.print(allF[i].getId_fournisseur());%>&idS=<%out.print(id);%>">VOIR BON DE COMMANDE</a></button>
                         </div>
                       </td>
                     </tr>
