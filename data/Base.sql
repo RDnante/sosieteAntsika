@@ -106,6 +106,7 @@ CREATE TABLE sortie_stock(
     id_article INT,
     quantite_total DECIMAL,
     date_sortie DATE,
+    prix_unitaire decimal,
     FOREIGN KEY (id_article) REFERENCES article(id_article)
 );
 

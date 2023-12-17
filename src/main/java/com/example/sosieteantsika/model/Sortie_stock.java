@@ -58,8 +58,10 @@ public class Sortie_stock {
                 connection = new Connect().connecter();
                 verif = true;
             }
+            double prix_unitaire = new Etat_stock().get_prix_unitaire(connection,id_article);
+            double prix_vente = prix_unitaire * 1.4;
             Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into sortie_stock values (default,"+id_article+","+quantite_total+",'"+date+"')");
+            statement.executeUpdate("insert into sortie_stock values (default,"+id_article+","+quantite_total+",'"+date+"',"+prix_vente+")");
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("erreur insertion sortie stock");
