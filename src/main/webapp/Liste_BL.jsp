@@ -1,5 +1,9 @@
 <%@ page import="com.example.sosieteantsika.model.Fournisseur" %>
+<%@ page import="com.example.sosieteantsika.model.Commande_livraison" %>
 <%@include file="./Header.jsp"%>
+<%
+    Commande_livraison[] allC = (Commande_livraison[]) request.getAttribute("bdc");
+%>
 <div class="page-wrapper">
 
     <div class="page-container">
@@ -26,13 +30,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% for (int i = 0; i < 2; i++) { %>
+                                <% for (int i = 0; i < allC.length; i++) { %>
                                 <tr class="tr-shadow">
-                                    <td>1</td>
-                                    <td>DATE</td>
+                                    <td><%out.print(i+1);%></td>
+                                    <td><%out.print(allC[i].getDate_confirmation());%></td>
                                     <td>
                                         <div class="table-data-feature">
-                                            <button class="btn btn-info" data-toggle="tooltip" data-placement="top" style="color: white"><a href="">VOIR BL</a></button>
+                                            <button class="btn btn-info" data-toggle="tooltip" data-placement="top" style="color: white"><a href="BLServlet?date=<%out.print(allC[i].getDate_confirmation());%>">VOIR BL</a></button>
                                         </div>
                                     </td>
                                 </tr>

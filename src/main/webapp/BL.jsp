@@ -1,6 +1,12 @@
 <%@ page import="com.example.sosieteantsika.model.Commande" %>
 <%@ page import="com.example.sosieteantsika.model.Service" %>
+<%@ page import="com.example.sosieteantsika.model.Commande_livraison" %>
 <%@include file="./Header.jsp"%>
+<%
+  Commande_livraison cl = (Commande_livraison) request.getAttribute("cl");
+  Commande[] allC = (Commande[]) request.getAttribute("c");
+  double somme = (double)request.getAttribute("somme");
+%>
 <div class="page-wrapper">
 
   <div class="page-container">
@@ -39,13 +45,13 @@
 
                       <div class="row" >
                         <div class="col-lg-11 offset-lg-1">
-                          <h3 class="h3" style="color: #1c294e">Date :<span style="color:darkgray"> 28/10/2003</span></h3>
+                          <h3 class="h3" style="color: #1c294e">Date :<span style="color:darkgray"><%out.print(cl.getDate_confirmation());%></span></h3>
                         </div>
                       </div>
 
                       <div class="row" >
                         <div class="col-lg-11 offset-lg-1">
-                          <h5 style="color: #1c294e">Numero Bon de commande :<span style="color:darkgray">4</span></h5>
+                          <h5 style="color: #1c294e">Numero Bon de commande :<span style="color:darkgray"><%out.print(cl.getId_commande());%></span></h5>
                         </div>
                       </div>
 
@@ -68,11 +74,11 @@
                                   </thead>
 
                                   <tbody>
-                                  <%for (int i = 0; i < 2; i++) {%>
+                                  <%for (int i = 0; i < allC.length; i++) {%>
                                   <tr>
-                                    <td>ARTICLE</td>
-                                    <td>categorie</td>
-                                    <td>3</td>
+                                    <td><%out.print(allC[i].getCategorie());%></td>
+                                    <td><%out.print(allC[i].getDesignation());%></td>
+                                    <td><%out.print(allC[i].getQuantite());%></td>
                                   </tr>
                                   <%}%>
                                   </tbody>
@@ -106,13 +112,13 @@
                                   </thead>
 
                                   <tbody>
-                                  <%for (int i = 0; i < 2; i++) {%>
+                                  <%for (int i = 0; i < allC.length; i++) {%>
                                   <tr>
-                                    <td>Outil</td>
-                                    <td>Couteau</td>
-                                    <td>5</td>
-                                    <td>560.00</td>
-                                    <td>600.00</td>
+                                    <td><%out.print(allC[i].getCategorie());%></td>
+                                    <td><%out.print(allC[i].getDesignation());%></td>
+                                    <td><%out.print(allC[i].getQuantite());%></td>
+                                    <td><%out.print(allC[i].getTva());%></td>
+                                    <td><%out.print(allC[i].getTtc());%></td>
                                   </tr>
                                   <%}%>
                                   </tbody>
@@ -125,7 +131,7 @@
                       <!--               remerciements -->
                       <div class="row">
                         <div class="col-lg-8 offset-lg-4">
-                          <p>Arretee la presente facture a la somme de : <span style="color: #2d2e33; font-size: large"></span></p>
+                          <p>Arretee la presente facture a la somme de : <span style="color: #2d2e33; font-size: large"><%out.print(somme);%></span></p>
                         </div>
                       </div>
 

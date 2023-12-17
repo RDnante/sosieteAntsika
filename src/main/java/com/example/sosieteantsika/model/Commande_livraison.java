@@ -48,6 +48,29 @@ public class Commande_livraison {
         this.id_commande = id_commande;
     }
 
+    public Commande_livraison getCommandeLivraisonByDate(Connection c, Date d, int idFournisseur)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed()){
+                c = (new Connect()).connecter();
+                coTest = true;}
+            Commande_livraison[] cl = this.getAllCommandeLivraison(c, idFournisseur);
+            for (int i = 0; i < cl.length; i++) {
+                if (cl[i].getDate_confirmation().equals(d)) {
+                    return cl[i];
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
     public Commande_livraison[] getAllCommandeLivraison(Connection c, int idFournisseur)throws Exception{
         Boolean coTest = false;
         try {
@@ -84,6 +107,32 @@ public class Commande_livraison {
             Commande com = new Commande();
             for (int i = 0; i < cl.length; i++) {
                 allC.add(com.getCommandeById(c, cl[i].getId_commande()));
+            }
+            Commande[] all = new Commande[allC.size()];
+            return allC.toArray(all);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
+    public Commande[] getAllCommandeCommandeLivraisonByDate(Connection c, int idFournisseur, Date date)throws Exception{
+        Boolean coTest = false;
+        Commande_livraison[] cl = this.getAllCommandeLivraison(c, idFournisseur);
+        try {
+            if (c==null||c.isClosed()){
+                c = (new Connect()).connecter();
+                coTest = true;}
+            List<Commande> allC = new ArrayList<>();
+            Commande com = new Commande();
+            for (int i = 0; i < cl.length; i++) {
+                Commande co = com.getCommandeById(c, cl[i].getId_commande());
+                if (co.getDate().equals(date))
+                    allC.add(co);
             }
             Commande[] all = new Commande[allC.size()];
             return allC.toArray(all);

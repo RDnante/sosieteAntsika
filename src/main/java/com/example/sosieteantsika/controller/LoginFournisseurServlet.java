@@ -28,7 +28,7 @@ public class LoginFournisseurServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("fournisseur",f);
 
-            response.sendRedirect("acceuil_fournisseur.jsp");
+            response.sendRedirect("ListeBLServlet");
         } catch (Exception e) {
             response.sendRedirect("Login_Fournisseur.jsp");
         }
