@@ -108,6 +108,7 @@ public class Etat_stock {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from etatstock");
             while (resultSet.next()) {
+                System.out.println("while");
                 Etat_stock v = new Etat_stock();
                 int id_article = resultSet.getInt("id_article");
                 Article a = new Article().getarticleById(connection,id_article);
@@ -115,6 +116,7 @@ public class Etat_stock {
                 v.setQuantite(resultSet.getDouble("quantite"));
                 v.setPrix_unitaire(this.get_prix_unitaire(connection,id_article));
                 v.setPrix_total(v.getQuantite() * v.getPrix_unitaire() * 1.4);
+                valiny.add(v);
             }
         }catch (Exception e){
             e.printStackTrace();

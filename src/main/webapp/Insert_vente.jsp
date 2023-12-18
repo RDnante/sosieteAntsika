@@ -1,4 +1,10 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.sosieteantsika.model.Article" %>
 <%@include file="./Header.jsp"%>
+<%
+  List<Article> articleList = (List<Article>) request.getAttribute("listarticle");
+  %>
+%>
 <div class="page-wrapper">
 
   <div class="page-container">
@@ -16,12 +22,12 @@
                 <h3 class="text-center title-2">Vente</h3>
               </div>
               <hr>
-              <form action="" method="get">
+              <form action="VenteServlet" method="post">
                 <div class="form-group">
                   <label for="idarticle" class="control-label mb-1">Article</label>
                   <select id="idarticle" name="idarticle" class="form-control" required>
-                    <% for (int i = 0; i < 3; i++) { %>
-                    <option value="<%= i %>">Article <%= i %></option>
+                    <% for (Article a : articleList) { %>
+                    <option value="<%= a.getId_article() %>"><%= a.getNom() %></option>
                     <% } %>
                   </select>
                 </div>
