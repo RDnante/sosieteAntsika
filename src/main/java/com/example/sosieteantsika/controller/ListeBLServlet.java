@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 import com.example.sosieteantsika.connection.Connect;
 import com.example.sosieteantsika.model.Commande_livraison;
@@ -21,7 +22,7 @@ public class ListeBLServlet extends HttpServlet {
             HttpSession session = request.getSession();
             Fournisseur fournisseur = (Fournisseur)session.getAttribute("fournisseur");
             Commande_livraison cl = new Commande_livraison();
-            Commande_livraison[] allC = cl.getAllCommandeLivraison(c, fournisseur.getId_fournisseur());
+            Commande_livraison[] allC = cl.verification(c,cl.getAllCommandeLivraison(c, fournisseur.getId_fournisseur()));
             request.setAttribute("bdc", allC);
             String lien = "Liste_BL";
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(lien+".jsp");

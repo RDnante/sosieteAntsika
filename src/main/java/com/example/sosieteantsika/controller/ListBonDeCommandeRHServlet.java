@@ -38,6 +38,7 @@ public class ListBonDeCommandeRHServlet extends HttpServlet {
                 }
             }
             Fournisseur[] ff = new Fournisseur[allF.size()];
+            request.setAttribute("service",idService);
             request.setAttribute("fournisseur", allF.toArray(ff));
             String lien = "Liste_bonDeCommandeRH";
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(lien+".jsp");
