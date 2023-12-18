@@ -1207,11 +1207,11 @@
       var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ["Sun", "Mon", "Tu", "Wed", "Th", "Fri", "Sat"],
+          labels: ["Couteau", "Stylo", "Riz"],
           datasets: [
             {
-              label: "My First dataset",
-              data: [40, 55, 75, 81, 56, 55, 40],
+              label: "Article",
+              data: [10, 15, 13],
               borderColor: "rgba(0, 123, 255, 0.9)",
               borderWidth: "0",
               backgroundColor: "rgba(0, 123, 255, 0.5)"

@@ -29,7 +29,7 @@
                         <div class="col-lg-8 offset-lg-2">
                           <div class="p-5">
                             <div class="text-center">
-                              <h1 class="h4 text-gray-900 mb-4"> Bon de Livraison</h1>
+                              <h1 class="h4 text-gray-900 mb-4"> Bon de Livraison et Facture</h1>
                             </div>
 
                           </div>
@@ -53,7 +53,7 @@
                         <div class="col-lg-10 offset-lg-1">
                           <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                              <h6 class="m-0 font-weight-bold text-primary">Liste des articles</h6>
+                              <h6 class="m-0 font-weight-bold text-primary">Bon de livraison</h6>
                             </div>
                             <div class="card-body">
                               <div class="table-responsive">
@@ -78,13 +78,61 @@
                                   </tbody>
                                 </table>
                               </div>
-                              <div class="user-data__footer">
-                                <button class="au-btn au-btn-load">Confirmer</button>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-lg-10 offset-lg-1">
+                          <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                              <h6 class="m-0 font-weight-bold text-primary">Facture</h6>
+                            </div>
+                            <div class="card-body">
+                              <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                  <thead>
+                                  <tr>
+                                    <th>Categorie</th>
+                                    <th>Designation</th>
+                                    <th>Quantite</th>
+                                    <th>Prix unitaire</th>
+                                    <th>TTC</th>
+
+                                  </tr>
+                                  </thead>
+
+                                  <tbody>
+                                  <%for (int i = 0; i < 2; i++) {%>
+                                  <tr>
+                                    <td>Outil</td>
+                                    <td>Couteau</td>
+                                    <td>5</td>
+                                    <td>560.00</td>
+                                    <td>600.00</td>
+                                  </tr>
+                                  <%}%>
+                                  </tbody>
+                                </table>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
+                      <!--               remerciements -->
+                      <div class="row">
+                        <div class="col-lg-8 offset-lg-4">
+                          <p>Arretee la presente facture a la somme de : <span style="color: #2d2e33; font-size: large"></span></p>
+                        </div>
+                      </div>
+
+                      <div class="user-data__footer">
+                        <button class="au-btn au-btn-load">Confirmer</button>
+                      </div>
+
                     </div>
                   </div>
 

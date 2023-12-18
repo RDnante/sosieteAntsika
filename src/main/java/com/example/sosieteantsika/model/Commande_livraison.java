@@ -100,12 +100,37 @@ public class Commande_livraison {
     public void envoyerBonDeLivraison(Connection c, int idFournisseur)throws Exception{
         Boolean coTest = false;
         Commande_livraison[] cl = this.getAllCommandeLivraison(c, idFournisseur);
+        Commande[] allC = this.getAllCommandeCommandeLivraison(c, idFournisseur);
         try {
             if (c==null||c.isClosed()){
                 c = (new Connect()).connecter();
                 coTest = true;}
             Statement st = c.createStatement();
-            
+            String sql1 = "insert into bon_de_livraison(date) values(DEFAULT)";
+            int ok = st.executeUpdate(sql1);
+            String sql2 = "select max(id_bon_de_livraison) from bon_de_livraison";
+            ResultSet res = st.executeQuery(sql2);
+            int idBonDeLivraison = 0;
+            String sql3 = "";            
+            String sql4 = "";
+            Service_besoin sb = new Service_besoin();
+
+            while (res.next()) {
+                idBonDeLivraison = res.getInt(1);
+            }
+            for (int i = 0; i < cl.length; i++) {
+                sql3 = "insert into bon_de_livraison_detail(id_bon_de_livraison,id_bon_de_commande) values("+idBonDeLivraison+","+cl[i].getId_bon_de_commande()+")";
+                ok = st.executeUpdate(sql3);
+            }
+
+            for (int i = 0; i < allC.length; i++) {
+                sb.updateStatus(c, 10 , allC[i].getId_service_besoin());
+                sb = sb.verificationServiceAchat(c, allC[i].getId_service_besoin());
+                if (sb!=null) {
+                    sql4 = "insert into entree_stock(id_article,quantite,prix_unitaire,date_entree) values("+sb.getId_article()+","+allC[i].getQuantite()+","+allC[i].getTtc()+",CURRENT_DATE";
+                    ok = st.executeUpdate(sql4);
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
