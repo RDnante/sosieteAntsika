@@ -173,6 +173,33 @@ public class Service_besoin {
         }
     }
 
+    @Deprecated
+    public List<Service_besoin> getServiBesoinByAchat(Connection connection) throws Exception {
+        List<Service_besoin> valiny = new ArrayList<Service_besoin>();
+        boolean verif = false;
+        try {
+            if (connection == null || connection.isClosed()) {
+                verif = true;
+                connection = new Connect().connecter();
+            }
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select * from service_besoin where id_service = 6 and status >= 10");
+            while (resultSet.next()) {
+                Service_besoin serviceBesoin = new Service_besoin();
+                serviceBesoin.setId_service_besoin(resultSet.getInt("id_service_besoin"));
+            }
+        }catch (Exception e) {
+
+        }
+        finally {
+            if (verif == true) {
+                connection.close();
+            }
+        }
+
+        return valiny;
+    }
+
 
     public Service_besoin verificationServiceAchat(Connection c, int idServiceBesoin)throws Exception{
         Boolean coTest = false;

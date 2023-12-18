@@ -106,6 +106,7 @@ CREATE TABLE sortie_stock(
     id_article INT,
     quantite_total DECIMAL,
     date_sortie DATE,
+    prix_unitaire decimal,
     FOREIGN KEY (id_article) REFERENCES article(id_article)
 );
 
@@ -125,6 +126,8 @@ create table bon_de_livraison(
     id_bon_de_livraison serial PRIMARY KEY,
     date DATE DEFAULT CURRENT_DATE
 );
+
+    alter table bon_de_livraison add column dateBDC DATE;
 
 create table bon_de_livraison_detail(
       id_bon_de_livraison_detail serial primary key,

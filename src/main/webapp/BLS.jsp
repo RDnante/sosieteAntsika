@@ -3,7 +3,6 @@
 <%@ page import="com.example.sosieteantsika.model.Commande_livraison" %>
 <%@include file="./Header.jsp"%>
 <%
-  Commande_livraison cl = (Commande_livraison) request.getAttribute("cl");
   Commande[] allC = (Commande[]) request.getAttribute("c");
   double somme = (double)request.getAttribute("somme");
 %>
@@ -31,66 +30,6 @@
                   <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                       <!-- Nested Row within Card Body -->
-                      <div class="row">
-                        <div class="col-lg-8 offset-lg-2">
-                          <div class="p-5">
-                            <div class="text-center">
-                              <h1 class="h4 text-gray-900 mb-4"> Bon de Livraison et Facture</h1>
-                            </div>
-
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div class="row" >
-                        <div class="col-lg-11 offset-lg-1">
-                          <h3 class="h3" style="color: #1c294e">Date :<span style="color:darkgray"><%out.print(cl.getDate_confirmation());%></span></h3>
-                        </div>
-                      </div>
-
-                      <div class="row" >
-                        <div class="col-lg-11 offset-lg-1">
-                          <h5 style="color: #1c294e">Numero Bon de commande :<span style="color:darkgray"><%out.print(cl.getId_commande());%></span></h5>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-lg-10 offset-lg-1">
-                          <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                              <h6 class="m-0 font-weight-bold text-primary">Bon de livraison</h6>
-                            </div>
-                            <div class="card-body">
-                              <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                  <thead>
-                                  <tr>
-                                    <th>Categorie</th>
-                                    <th>Designation</th>
-                                    <th>Quantite</th>
-
-                                  </tr>
-                                  </thead>
-
-                                  <tbody>
-                                  <%for (int i = 0; i < allC.length; i++) {%>
-                                  <tr>
-                                    <td><%out.print(allC[i].getCategorie());%></td>
-                                    <td><%out.print(allC[i].getDesignation());%></td>
-                                    <td><%out.print(allC[i].getQuantite());%></td>
-                                  </tr>
-                                  <%}%>
-                                  </tbody>
-                                </table>
-                              </div>
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-
                       <div class="row">
                         <div class="col-lg-10 offset-lg-1">
                           <div class="card shadow mb-4">

@@ -1,8 +1,9 @@
 <%@ page import="com.example.sosieteantsika.model.Fournisseur" %>
 <%@ page import="com.example.sosieteantsika.model.Commande_livraison" %>
+<%@ page import="com.example.sosieteantsika.model.Bon_de_livraison" %>
 <%@include file="./Header.jsp"%>
 <%
-    Commande_livraison[] allC = (Commande_livraison[]) request.getAttribute("bdc");
+    Bon_de_livraison[] allBL = (Bon_de_livraison[]) request.getAttribute("bl");
 %>
 <div class="page-wrapper">
 
@@ -24,19 +25,19 @@
                             <table class="table table-data2">
                                 <thead>
                                 <tr>
-                                    <th>Numero Bon de commande</th>
+                                    <th>Numero Facture</th>
                                     <th>Date</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% for (int i = 0; i < allC.length; i++) { %>
+                                <% for (int i = 0; i < allBL.length; i++) { %>
                                 <tr class="tr-shadow">
                                     <td><%out.print(i+1);%></td>
-                                    <td><%out.print(allC[i].getDate_confirmation());%></td>
+                                    <td><%out.print(allBL[i].getDate());%></td>
                                     <td>
                                         <div class="table-data-feature">
-                                            <button class="btn btn-info" data-toggle="tooltip" data-placement="top" style="color: white"><a href="BLServlet?date=<%out.print(allC[i].getDate_confirmation());%>">VOIR BL</a></button>
+                                            <button class="btn btn-info" data-toggle="tooltip" data-placement="top" style="color: white"><a href="BLServlet?date=<%out.print(allBL[i].getDate());%>">VOIR FACTURE</a></button>
                                         </div>
                                     </td>
                                 </tr>

@@ -1,6 +1,11 @@
 package com.example.sosieteantsika.model;
 
+import com.example.sosieteantsika.connection.Connect;
+
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class Sortie_stock {
     int id_sortie_stock;
@@ -40,5 +45,51 @@ public class Sortie_stock {
     public void setDate_sortie(Date date_sortie) {
         this.date_sortie = date_sortie;
     }
-    
+
+    public void inserer_sortie(Connection connection, int id_article, double quantite_total, String date) throws Exception {
+        boolean verif = false;
+        double sortie = this.sortieQuantitebyArticle(connection,id_article) + quantite_total;
+        double entrer = new Entree_stock().getQuantiteByArticle(connection,id_article);
+        if (entrer - sortie < 0) {
+            throw new Exception("quantite insuffisant");
+        }
+        try {
+            if (connection == null || connection.isClosed()) {
+                connection = new Connect().connecter();
+                verif = true;
+            }
+            double prix_unitaire = new Etat_stock().get_prix_unitaire(connection,id_article);
+            double prix_vente = prix_unitaire * 1.4;
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("insert into sortie_stock values (default,"+id_article+","+quantite_total+",'"+date+"',"+prix_vente+")");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("erreur insertion sortie stock");
+        }finally {
+            if (verif == true) {
+                connection.close();
+            }
+        }
+    }
+
+    public Double sortieQuantitebyArticle(Connection connection,int id_article) throws Exception {
+        boolean verif = false;
+        Double valiny = 0.0;
+
+        try {
+            if (connection == null || connection.isClosed()) {
+                verif = true;
+                connection = new Connect().connecter();
+            }
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select sum(quantite_total) as sum from sortie_stock where id_article = "+id_article);
+            resultSet.next();
+
+            valiny = resultSet.getDouble("sum");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return valiny;
+    }
 }
