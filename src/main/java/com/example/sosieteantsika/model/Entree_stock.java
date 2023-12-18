@@ -83,4 +83,25 @@ public class Entree_stock {
 
         return valiny;
     }
+
+    public Double getQuantiteByArticle(Connection connection,int id_article) throws Exception {
+        boolean verif = false;
+        Double valiny = 0.0;
+
+        try {
+            if (connection == null || connection.isClosed()) {
+                verif = true;
+                connection = new Connect().connecter();
+            }
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select sum(quantite) as sum from entree_stock where id_article = "+id_article);
+            resultSet.next();
+
+            valiny = resultSet.getDouble("sum");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return valiny;
+    }
 }
