@@ -9,3 +9,9 @@ create or replace view etatstock as
 
     select es.id_article from entree_stock as es
     join sortie_stock ss on es.id_article = ss.id_article;
+
+create or replace view marge_brute as
+    select entree_stock.id_article,(sum(entree_stock.quantite)) from entree_stock
+    join sortie_stock ss on entree_stock.id_article = ss.id_article
+    group by entree_stock.id_article;
+    select (select sum(quantite) from entree_stock) as quantite_entant;
