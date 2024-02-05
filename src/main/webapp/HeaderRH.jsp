@@ -66,7 +66,7 @@
                             <i class="fas fa-chart-bar"></i>Tableau d'amortissement lineaire</a>
                     </li>
                     <li>
-                        <a href="ListBonDeCommandeServiceRHServlet">
+                        <a href="ListeAmortissementDegressif">
                             <i class="fas fa-chart-bar"></i>Tableau d'amortissement degressif</a>
                     </li>
 
