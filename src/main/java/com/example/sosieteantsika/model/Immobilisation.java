@@ -146,7 +146,7 @@ public class Immobilisation {
                 testco = true;
             }
             Statement st = c.createStatement();
-            String sql = "select * from immobilisation";
+            String sql = "select * from immobilisations";
             ResultSet res = st.executeQuery(sql);
             List<Immobilisation> all = new ArrayList<>();
             while (res.next()) {
