@@ -162,8 +162,9 @@ CREATE TABLE Immobilisations (
 );
 
 insert into Lieux values (default,'andoharanofotsy','latitude','longitude');
-insert into Immobilisations values (default,default,20000000,'101',01,'voiture','toyota','supra','1234','stutututu',20,true,true,'lineaire',1);
-insert into Immobilisations values (default,default,100000,'101',02,'moto','toyota','supra','1234','stutututu',0,true,true,'degressif',1);
+insert into Immobilisations values (default,default,20000000,'101',01,'Voiture','Toyota','Supra','1234','stutututu',20,true,true,'lineaire',1);
+insert into Immobilisations values (default,default,100000,'101',02,'Moto','Honda','CBR1000','1234','vrouum',0,true,true,'degressif',1);
+insert into Immobilisations values (default,default,1000000,'101',03,'Voiture','Renault','4L','1234','pffff',0,false,false,'lineaire',1);
 
 
 CREATE TABLE coefficient(

@@ -5,7 +5,9 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.example.sosieteantsika.connection.Connect;
 
@@ -137,6 +139,83 @@ public class Immobilisation {
         this.id_lieu = id_lieu;
     }
 
+    public Immobilisation[] rechercheAvecBoolean(String text, Connection c) throws Exception {
+        Immobilisation[] all = this.recherche(text, c);
+        String[] rech = text.split(" ");
+        List<Immobilisation> val = new ArrayList<Immobilisation>();
+        int test = 0;
+        for (int i = 0; i < rech.length; i++) {
+            if (rech[i].toLowerCase().equals("neuf")){
+                for (int j = 0; j < all.length; j++) {
+                    if (all[j].getNeuf()) {
+                        val.add(all[j]);
+                        test++;
+                    }
+                }
+            } else if (rech[i].toLowerCase().equals("used")) {
+                for (int j = 0; j < all.length; j++) {
+                    if (!all[j].getNeuf()) {
+                        val.add(all[j]);
+                        test++;
+                    }
+                }
+            }
+            if (rech[i].toLowerCase().equals("utilisable")){
+                for (int j = 0; j < all.length; j++) {
+                    if (all[j].getUtilisable()) {
+                        val.add(all[j]);
+                        test++;
+                    }
+                }
+            } else if (rech[i].toLowerCase().equals("inutilisable")) {
+                for (int j = 0; j < all.length; j++) {
+                    if (!all[j].getUtilisable()) {
+                        val.add(all[j]);
+                        test++;
+                    }
+                }
+            }
+        }
+        if (test!=0) {
+            Set<Immobilisation> sansDoublons = new HashSet<>(val);
+            val = new ArrayList<>(sansDoublons);
+            return val.toArray(new Immobilisation[0]);
+        }
+        return all;
+    }
+    public Immobilisation[] recherche(String text, Connection c) throws Exception {
+        Immobilisation[] immobilisations = this.getAll(c);
+        String[] rech = text.split(" ");
+        int test = 0;
+        List<Immobilisation> val = new ArrayList<Immobilisation>();
+        for (int i = 0; i < rech.length; i++) {
+            for (int j = 0; j < immobilisations.length; j++) {
+                if (
+                    rech[i].toLowerCase().equals(immobilisations[j].getPrix()) ||
+                    rech[i].toLowerCase().equals(immobilisations[j].getCompte_comptable().toLowerCase()) ||
+                    rech[i].toLowerCase().equals(immobilisations[j].getNumero().toLowerCase()) ||
+                    rech[i].toLowerCase().equals(immobilisations[j].getType().toLowerCase()) ||
+                    rech[i].toLowerCase().equals(immobilisations[j].getMarque().toLowerCase()) ||
+                    rech[i].toLowerCase().equals(immobilisations[j].getModel().toLowerCase()) ||
+                    rech[i].toLowerCase().equals(immobilisations[j].getNumero_serie().toLowerCase()) ||
+                    rech[i].toLowerCase().equals(immobilisations[j].getDescription().toLowerCase()) ||
+                    rech[i].toLowerCase().equals(immobilisations[j].getMethode_ammortissement().toLowerCase())
+
+                ) {
+                    val.add(immobilisations[j]);
+                    test++;
+                }
+
+            }
+        }
+        if (test!=0) {
+            Set<Immobilisation> sansDoublons = new HashSet<>(val);
+            val = new ArrayList<>(sansDoublons);
+            return val.toArray(new Immobilisation[0]);
+        }
+        if (text.toLowerCase().equals("tous")) return immobilisations;
+        return null;
+    }
     public Immobilisation[] getAll(Connection c)throws Exception{
         Boolean testco = false;
         try {

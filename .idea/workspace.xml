@@ -9,7 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="142c0094-da33-422c-8702-213486fbc76e" name="Changes" comment="" />
+    <list default="true" id="142c0094-da33-422c-8702-213486fbc76e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/sosieteantsika/controller/RechercheServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Base.sql" beforeDir="false" afterPath="$PROJECT_DIR$/data/Base.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sosieteantsika/TestTatiana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sosieteantsika/TestTatiana.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sosieteantsika/connection/Connect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sosieteantsika/connection/Connect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sosieteantsika/model/Immobilisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sosieteantsika/model/Immobilisation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/HeaderRH.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HeaderRH.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -44,6 +53,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2ZNmQ9bixQ7GCGEL6CQObZ5JUwz" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -55,7 +67,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/ITU/s5/Tovo/sosieteAntsika/src/main/webapp/WEB-INF",
+    "last_opened_file_path": "D:/postgresql-jdbc.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

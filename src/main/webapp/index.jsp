@@ -7,7 +7,7 @@
 <%@ page import="com.example.sosieteantsika.model.Article" %>
 <%@include file="./Header.jsp"%>
 <%
-    if(session.getAttribute("service")== null) response.sendRedirect("login.jsp");
+    if(session.getAttribute("service") == null) response.sendRedirect("login.jsp");
     HashMap<String,String[]> all = new HashMap<>();
     try{
         Connect co = new Connect();

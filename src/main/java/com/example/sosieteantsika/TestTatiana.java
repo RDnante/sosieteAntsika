@@ -2,6 +2,7 @@ package com.example.sosieteantsika;
 
 import com.example.sosieteantsika.connection.Connect;
 import com.example.sosieteantsika.model.Commande_livraison;
+import com.example.sosieteantsika.model.Immobilisation;
 import com.example.sosieteantsika.model.Service_besoin;
 import com.example.sosieteantsika.model.Stock_fournisseur;
 
@@ -14,6 +15,9 @@ public class TestTatiana {
         //sb.insertServiceBesoin(null, 2, 2, 5);
         Connect co = new Connect();
         Connection c = co.connecter();
+        Immobilisation i = new Immobilisation();
+        Immobilisation[] rech = i.recherche("moto", c);
+        System.out.println(rech[1].getMarque());
         // Service_besoin[] allSbFiltrer = sb.getAllServiceBesoinFiltre(c,1);
         // Service_besoin[] allSb = sb.getAllServiceBesoin(c,1);
         // for (int i = 0; i < allSb.length; i++) {
@@ -28,6 +32,6 @@ public class TestTatiana {
         // }
 
         Commande_livraison[] all = (new Commande_livraison()).getAllCommandeLivraison(c, 1);
-        System.out.println(all[0].getDate_confirmation());
+        //System.out.println(all[0].getDate_confirmation());
     }
 }
