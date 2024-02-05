@@ -1,7 +1,9 @@
 <%@ page import="com.example.sosieteantsika.model.*" %>
 <%@ page import="java.util.List" %>
-<%@include file="./Header.jsp"%>
+<%@ page import="java.text.NumberFormat" %>
+<%@include file="./HeaderRH.jsp"%>
 <%
+    NumberFormat nf = NumberFormat.getCurrencyInstance();
   try{
     Immobilisation immobilisation = (Immobilisation) request.getAttribute("immobilisation");
 %>
@@ -41,22 +43,22 @@
 
                       <div class="text-left row">
                         <div class="col-md-4 offset-lg-2">
-                          <p><span style="font-size: 30px;">Date : </span> <% out.print(immobilisation.getDate()); %></p>
+                          <p style="font-size: 20px;"><span style="font-weight: bold;">Date : </span> <%= immobilisation.getDate() %></p>
                         </div>
                       </div>
                       <div class="text-left row">
                         <div class="col-md-4 offset-lg-2">
-                          <p><span style="font-size: 30px;">Prix : </span> <% out.print(immobilisation.getPrix()); %></p>
+                          <p style="font-size: 20px;"><span style="font-weight: bold;">Prix : </span> <%=nf.format(immobilisation.getPrix())%></p>
                         </div>
                       </div>
                       <div class="text-left row">
                         <div class="col-md-8 offset-lg-2">
-                          <p><span style="font-size: 30px;">Compte Comptable : </span> <% out.print(immobilisation.getCompte_comptable()); %></p>
+                          <p style="font-size: 20px;"><span style="font-weight: bold;">Compte Comptable : </span> <%=immobilisation.getCompte_comptable() %></p>
                         </div>
                       </div>
                       <div class="text-left row">
                         <div class="col-md-4 offset-lg-2">
-                          <p><span style="font-size: 30px;">Numero : </span> <% out.print(immobilisation.getNumero()); %></p>
+                          <p style="font-size: 20px;"><span style="font-weight: bold;">Numero : </span> <%= immobilisation.getNumero() %></p>
                         </div>
                       </div>
 <%--                      <div class="row" >--%>

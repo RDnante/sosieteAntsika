@@ -13,7 +13,8 @@ public class PvServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Immobilisation immobilisation = new Immobilisation();
-            immobilisation = immobilisation.get(null,1);
+            int idImmo = Integer.parseInt(request.getParameter("idImmo"));
+            immobilisation = immobilisation.get(null,idImmo);
             request.setAttribute("immobilisation",immobilisation);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("pv.jsp");
