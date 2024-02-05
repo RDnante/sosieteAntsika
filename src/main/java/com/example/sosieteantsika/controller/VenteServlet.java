@@ -36,6 +36,8 @@ public class VenteServlet extends HttpServlet {
             Date d = Date.valueOf(LocalDate.now());
             Sortie_stock sortieStock = new Sortie_stock();
             sortieStock.inserer_sortie(null,idarticle,quantite,d.toString());
+
+            response.sendRedirect("VenteServlet");
         }catch (Exception e) {
 
         }

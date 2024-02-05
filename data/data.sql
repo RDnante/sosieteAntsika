@@ -45,3 +45,10 @@ insert into fournisseur values (default,'cosmos','1234');
 insert into stock_fournisseur values (default,1,1,150,340);
 insert into stock_fournisseur values (default,2,2,150,340);
 insert into stock_fournisseur values (default,1,2,150,340);
+
+
+insert into entree_stock values (default,1,102,1000,'2023-12-11');
+insert into entree_stock values (default,2,100,1500,'2023-12-11');
+insert into entree_stock values (default,1,1000,'2023-12-11');
+
+

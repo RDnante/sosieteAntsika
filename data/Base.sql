@@ -134,3 +134,58 @@ create table bon_de_livraison_detail(
       id_bon_de_livraison int references bon_de_livraison(id_bon_de_livraison),
       id_bon_de_commande int references bon_de_commande(id_bon_de_commande)
 );
+
+CREATE TABLE Lieux (
+    ID_Lieu serial primary key,
+    Nom_endroit VARCHAR(100),
+    Latitude VARCHAR,
+    Longitude VARCHAR
+);
+
+CREATE TABLE Immobilisations (
+    ID_Immobilisation serial primary key,
+    Date DATE default current_date,
+    prix decimal,
+    Compte_comptable VARCHAR(20),
+    Numero VARCHAR(20),
+    Type VARCHAR(50),
+    Marque VARCHAR(50),
+    Modele VARCHAR(50),
+    Numero_serie VARCHAR(50),
+    Description TEXT,
+    Taux_amortissement DECIMAL(5,2),
+    Neuf BOOLEAN,
+    Utilisable BOOLEAN,
+    Methode_amortissement VARCHAR(50),
+    ID_Lieu INT,
+    FOREIGN KEY (ID_Lieu) REFERENCES Lieux(ID_Lieu)
+);
+
+insert into Lieux values (default,'andoharanofotsy','latitude','longitude');
+insert into Immobilisations values (default,default,20000000,'101',01,'voiture','toyota','supra','1234','stutututu',20,true,true,'lineaire',1);
+insert into Immobilisations values (default,default,100000,'101',02,'moto','toyota','supra','1234','stutututu',0,true,true,'degressif',1);
+
+
+CREATE TABLE coefficient(
+    id_coefficient SERIAL PRIMARY KEY ,
+    debut INT,
+    FIN INT,
+    valeur DECIMAL
+);
+
+CREATE TABLE annee(
+  id_annee SERIAL PRIMARY KEY ,
+  id_immobilisation INT,
+  annee INT
+);
+
+insert into coefficient(debut, fin, valeur) values
+    (2,4,1.25),
+    (5,6,1.75),
+    (7,1000,2.25);
+
+insert into annee(id_immobilisation, annee) values
+                 (2,5);
+
+
+

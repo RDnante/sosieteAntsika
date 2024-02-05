@@ -1,7 +1,35 @@
 <%@ page import="java.net.http.HttpClient" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="com.example.sosieteantsika.connection.Connect" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="com.example.sosieteantsika.model.Service_besoin" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="com.example.sosieteantsika.model.Article" %>
 <%@include file="./Header.jsp"%>
 <%
     if(session.getAttribute("service")== null) response.sendRedirect("login.jsp");
+    HashMap<String,String[]> all = new HashMap<>();
+    try{
+        Connect co = new Connect();
+        Connection c = co.connecter();
+        all = (new Service_besoin()).getAll(c);
+
+    }catch(Exception e){
+
+    }
+    String[] qt = all.get("qt");
+    String[] a = all.get("article");
+    String[] ar = new String[a.length];
+    Article art = new Article();
+    for (int i = 0; i < a.length; i++) {
+        try{
+            ar[i]= (art.getarticleById(null,Integer.parseInt(a[i]))).getNom();
+            System.out.println(qt[i]);
+        }catch (Exception e){
+
+        }
+
+    }
 %>
 <div class="page-wrapper">
 
@@ -35,7 +63,8 @@
         "use strict";
 
         try {
-
+            var qt = <%= Arrays.toString(qt)%>
+            var a = <%= Arrays.toString(a)%>
             // single bar chart
             var ctx = document.getElementById("singelBarChartTEST");
             if (ctx) {
@@ -43,11 +72,11 @@
                 var myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ["Coucouteau", "Stylo", "Riz"],
+                        labels: a,
                         datasets: [
                             {
                                 label: "Article",
-                                data: [10, 15, 13],
+                                data: qt,
                                 borderColor: "rgba(0, 123, 255, 0.9)",
                                 borderWidth: "0",
                                 backgroundColor: "rgba(0, 123, 255, 0.5)"

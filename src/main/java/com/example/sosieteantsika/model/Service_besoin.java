@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.example.sosieteantsika.connection.Connect;
@@ -219,6 +220,41 @@ public class Service_besoin {
                 return sb;
             }
                 return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+            // TODO: handle exception
+        }finally{
+            if (coTest==true)
+                c.close();
+        }
+    }
+
+    public HashMap<String,String[]> getAll(Connection c)throws Exception{
+        Boolean coTest = false;
+        try {
+            if (c==null||c.isClosed()){
+                c = (new Connect()).connecter();
+                coTest = true;}
+
+            Statement st = c.createStatement();
+            String sql = "select sum(quantite) as quantite, id_article from service_besoin group by id_article";
+            ResultSet res = st.executeQuery(sql);
+            Service_besoin sb = new Service_besoin();
+            List<String> str = new ArrayList<>();
+            List<String> stt = new ArrayList<>();
+            while (res.next()) {
+                str.add(res.getString(1));
+                stt.add(res.getString(2));
+            }
+
+            String[] ss = new String[str.size()];
+            String[] sd = new String[stt.size()];
+            HashMap<String,String[]> resu = new HashMap<String,String[]>();
+            resu.put("qt", str.toArray(ss));
+            resu.put("article", stt.toArray(sd));
+
+            return resu;
         } catch (Exception e) {
             e.printStackTrace();
             throw e;

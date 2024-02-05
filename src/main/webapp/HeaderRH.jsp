@@ -61,6 +61,14 @@
                         <a href="ListBonDeCommandeServiceRHServlet">
                             <i class="fas fa-chart-bar"></i>Bon de commande</a>
                     </li>
+                    <li>
+                        <a href="ListBonDeCommandeServiceRHServlet">
+                            <i class="fas fa-chart-bar"></i>Tableau d'amortissement lineaire</a>
+                    </li>
+                    <li>
+                        <a href="ListBonDeCommandeServiceRHServlet">
+                            <i class="fas fa-chart-bar"></i>Tableau d'amortissement degressif</a>
+                    </li>
 
                 </ul>
             </nav>

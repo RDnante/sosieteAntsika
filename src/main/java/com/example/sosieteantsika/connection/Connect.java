@@ -9,7 +9,7 @@ public class Connect {
         try {
             Class.forName("org.postgresql.Driver");
             String url="jdbc:postgresql://localhost:5432/syscom";
-            Connection c=DriverManager.getConnection(url,"postgres","28oct2003");
+            Connection c=DriverManager.getConnection(url,"postgres","S3p152022");
             return c;
         } catch (Exception e) {
             System.out.println(e);
