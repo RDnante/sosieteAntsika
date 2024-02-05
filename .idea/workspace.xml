@@ -68,6 +68,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/postgresql-jdbc.jar",
+    "last_opened_file_path": "E:/ITU/s5/Tovo/sosieteAntsika/src/main/webapp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -86,6 +87,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\ITU\s5\Tovo\sosieteAntsika\src\main\webapp" />
       <recent name="E:\ITU\s5\Tovo\sosieteAntsika\src\main\webapp\WEB-INF" />
       <recent name="D:\IT University\S5\Tovo\sosieteAntsika\src\main\webapp" />
     </key>
@@ -194,7 +196,7 @@
       <workItem from="1702282474728" duration="5656000" />
       <workItem from="1702869105380" duration="4141000" />
       <workItem from="1702888324735" duration="3691000" />
-      <workItem from="1707103633378" duration="2128000" />
+      <workItem from="1707103633378" duration="6566000" />
     </task>
     <servers />
   </component>

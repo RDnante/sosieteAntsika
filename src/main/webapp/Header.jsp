@@ -27,7 +27,7 @@
     <link href="./styles/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
-    <link href="./styles/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href=". /styles/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
     <link href="./styles/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
     <link href="./styles/vendor/wow/animate.css" rel="stylesheet" media="all">
     <link href="./styles/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
